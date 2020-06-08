@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "131853619298",
+    "firebase_url": "https://layananqta.firebaseio.com",
+    "project_id": "layananqta",
+    "storage_bucket": "layananqta.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:131853619298:android:3e479db504ec2e7e6c813b",
+        "android_client_info": {
+          "package_name": "id.yongki.layananqta"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "131853619298-0su5m37vl20b9utfpvvkim6120cetqen.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCyyYlYLoeyop4TF_Z405o3bVhhtdGNHNA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "131853619298-0su5m37vl20b9utfpvvkim6120cetqen.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
