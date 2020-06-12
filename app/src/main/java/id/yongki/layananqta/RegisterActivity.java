@@ -29,9 +29,18 @@ public class RegisterActivity extends AppCompatActivity {
         final EditText namaLengkap, email, nohp, password, repassword;
         Button regisBtn;
 
+        regisBtn = findViewById(R.id.register_regisbtn);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        uiViewSetup();
+
+
+        //inisiasi view
+        namaLengkap = findViewById(R.id.register_namaLengkap);
+        email = findViewById(R.id.register_etemail);
+        nohp = findViewById(R.id.register_etnotlp);
+        password = findViewById(R.id.register_etpassword);
+        repassword = findViewById(R.id.register_etrepassword);
 
 
 
@@ -100,6 +109,7 @@ public class RegisterActivity extends AppCompatActivity {
                 }
             }
         });
+
     }
 
     private void showDialog() {
@@ -128,12 +138,5 @@ public class RegisterActivity extends AppCompatActivity {
         // menampilkan alert dialog
         alertDialog.show();
     }
-    private void uiViewSetup(){
-        regisBtn = (EditText) findViewById(R.id.register_regisbtn);
-        namaLengkap = findViewById(R.id.register_namaLengkap);
-        email = findViewById(R.id.register_etemail);
-        nohp = findViewById(R.id.register_etnotlp);
-        password = findViewById(R.id.register_etpassword);
-        repassword = findViewById(R.id.register_etrepassword);
-    }
+
 }
