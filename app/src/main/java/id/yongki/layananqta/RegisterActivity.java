@@ -1,8 +1,11 @@
 package id.yongki.layananqta;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -48,19 +51,21 @@ public class RegisterActivity extends AppCompatActivity {
                 String epass = " ";
 
                 if (gnama.isEmpty()) {
-                    namaLengkap.setError("Nama lengkap tidak boleh kosong");
+                    String nama = getString(R.string.nama_kosong);
+                    namaLengkap.setError(nama);
                 } else if (gemail.isEmpty()) {
-                    email.setError("Email tidak boleh kosong");
-                }else if (gnama.isEmpty()) {
-                    nohp.setError("Nomor tidak boleh kosong");
-                }else if (gpassword.isEmpty()) {
-                    password.setError("Password tidak boleh kosong");
-                }
-                else if(!gpassword.equals(grepassword)){
+                    String emaile = getString(R.string.email_kosong);
+                    email.setError(emaile);
+                } else if (gnohp.isEmpty()) {
+                    String nohpe = getString(R.string.nohp_kosong);
+                    nohp.setError(nohpe);
+                } else if (gpassword.isEmpty()) {
+                    String passse = getString(R.string.pass_kosong);
+                    password.setError(passse);
+                } else if (!gpassword.equals(grepassword)) {
                     Toast toast = Toast.makeText(getApplicationContext(), "Password tidak cocok!", Toast.LENGTH_LONG);
                     toast.show();
-                }
-                else {
+                } else {
                     try {
                         epass = AESCrypt.encrypt(gpassword);
                     } catch (Exception e) {
@@ -93,12 +98,39 @@ public class RegisterActivity extends AppCompatActivity {
 
                                 }
                             });
-                    Toast toast = Toast.makeText(getApplicationContext(), "Selamat, anda sudah terdaftar! Silahkan melakukan login", Toast.LENGTH_LONG);
-                    toast.show();
+
+                    showDialog();
 
 
                 }
             }
         });
+    }
+
+    private void showDialog() {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                this);
+
+        // set title dialog
+        alertDialogBuilder.setTitle("Selamat!");
+
+        // set pesan dari dialog
+        alertDialogBuilder
+                .setMessage("Anda sudah terdaftar, Silahkan untuk melakukan login!")
+                .setIcon(R.mipmap.ic_launcher)
+                .setCancelable(false)
+                .setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                        startActivity(intent);
+                    }
+                });
+
+        // membuat alert dialog dari builder
+        AlertDialog alertDialog = alertDialogBuilder.create();
+
+        // menampilkan alert dialog
+        alertDialog.show();
     }
 }

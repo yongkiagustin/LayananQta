@@ -12,4 +12,10 @@
     <string name="daftar">Daftar</string>
     <string name="masuk">Masuk</string>
 
+    //warning
+    <string name="nama_kosong">Nama lengkap tidak boleh kosong</string>
+    <string name="email_kosong">Email tidak boleh kosong</string>
+    <string name="nohp_kosong">Nomor tidak boleh kosong</string>
+    <string name="pass_kosong">Password tidak boleh kosong</string>
+
 </resources>

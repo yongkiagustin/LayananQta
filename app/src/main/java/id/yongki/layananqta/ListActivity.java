@@ -16,6 +16,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.auth.User;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class ListActivity extends AppCompatActivity {
     ArrayList<UsersModel> usersList = new ArrayList<>();
@@ -43,9 +44,9 @@ public class ListActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
+                            for (QueryDocumentSnapshot document : Objects.requireNonNull(task.getResult())) {
                                usersList.add(new UsersModel(
-                                       (String) document.get("name"),
+                                       (String) document.get("nama"),
                                        (String) document.get("nohp"),
                                        (String) document.get("alamat"),
                                        (String) document.get("description")
