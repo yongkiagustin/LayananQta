@@ -1,4 +1,4 @@
-package id.yongki.layananqta;
+package id.yongki.layananqta.Adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,6 +9,9 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
+
+import id.yongki.layananqta.Model.UsersModel;
+import id.yongki.layananqta.R;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyViewHolder> {
 

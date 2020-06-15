@@ -8,5 +8,6 @@
         <item name="colorControlActivated">@color/colorPrimary</item>
         <item name="colorControlHighlight">@color/colorPrimary</item>
     </style>
+    <style name="SplashScreenStyle" parent="Theme.AppCompat.Light.NoActionBar"/>
 
 </resources>
