@@ -58,7 +58,7 @@ public class ListActivity extends AppCompatActivity {
                                        (String) document.get("nama"),
                                        (String) document.get("nohp"),
                                        (String) document.get("alamat"),
-                                       (String) document.get("description")
+                                       (String) document.get("deskripsi")
 
                                ));
                                 recyclerAdapter.notifyDataSetChanged();

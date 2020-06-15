@@ -1,8 +1,10 @@
 package id.yongki.layananqta;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -17,7 +19,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-import java.sql.RowId;
+
 
 
 public class RegisterActivity extends AppCompatActivity {
@@ -71,9 +73,7 @@ public class RegisterActivity extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(AuthResult authResult) {
 
-                                    startActivity(new Intent(getApplicationContext(), LoginActivity.class));
-
-                                    finish();
+                                    showDialog();
                                 }
                             })
                             .addOnFailureListener(new OnFailureListener() {
@@ -96,5 +96,32 @@ public class RegisterActivity extends AppCompatActivity {
                 
             }
         });
+    }
+    private void showDialog(){
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                this);
+
+        // set title dialog
+        alertDialogBuilder.setTitle("Selamat!");
+
+        // set pesan dari dialog
+        alertDialogBuilder
+                .setMessage("Anda berhasil mendaftar, klik Ok untuk melakukan login!")
+              //.setIcon(R.mipmap.ic_launcher)
+                .setCancelable(false)
+                .setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+
+                        finish();
+                    }
+                });
+
+        // membuat alert dialog dari builder
+        AlertDialog alertDialog = alertDialogBuilder.create();
+
+        // menampilkan alert dialog
+        alertDialog.show();
     }
 }
