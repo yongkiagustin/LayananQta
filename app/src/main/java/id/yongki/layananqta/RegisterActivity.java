@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.InputType;
+
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.view.View;
@@ -23,16 +23,12 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-import org.w3c.dom.Text;
 
 
 public class RegisterActivity extends AppCompatActivity {
 
-    private TextView login;
     private EditText email, password, repassword;
     private ProgressBar progressBar;
-    private Button regisBtn;
-    private ImageView icEye;
 
     private FirebaseAuth mAuth;
     boolean isPlay = false;
@@ -41,13 +37,13 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         mAuth = FirebaseAuth.getInstance();
-        login = findViewById(R.id.register_tvlogin);
+        TextView login = findViewById(R.id.register_tvlogin);
         progressBar = findViewById(R.id.register_progressbar);
-        regisBtn = findViewById(R.id.register_regisbtn);
+        Button regisBtn = findViewById(R.id.register_regisbtn);
         email = findViewById(R.id.register_etemail);
         password = findViewById(R.id.register_etpassword);
         repassword = findViewById(R.id.register_etrepassword);
-        icEye = findViewById(R.id.register_ic_eye);
+        ImageView icEye = findViewById(R.id.register_ic_eye);
 
 
         icEye.setBackgroundResource(R.drawable.ic_eye_hide);
