@@ -50,9 +50,15 @@
                 android:textSize="20sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
 
             <EditText
                 android:id="@+id/login_etpassword"
@@ -65,6 +71,13 @@
                 android:inputType="textPassword"
                 android:textSize="20sp" />
         </com.google.android.material.textfield.TextInputLayout>
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="40dp"
+                android:contentDescription="@string/deskripsi"
+                android:layout_weight="1"
+                android:id="@+id/login_ic_eye"/>
+        </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -75,7 +88,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="12dp"
                 android:layout_marginTop="10dp"
-                android:text="Belum pernah daftar? Daftar " />
+                android:text="@string/belumdaftar" />
 
             <TextView
                 android:id="@+id/login_tvregister"
@@ -84,7 +97,7 @@
                 android:layout_marginTop="10dp"
                 android:textAllCaps="true"
                 android:textStyle="bold"
-                android:text="Disini"
+                android:text="@string/disini"
                 android:textColor="@color/colorPrimary" />
         </LinearLayout>
     </LinearLayout>

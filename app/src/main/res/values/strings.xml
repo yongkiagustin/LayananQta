@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">LayananQta</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="nama_lengkap">Nama Lengkap</string>
     <string name="email">Email</string>
@@ -12,6 +12,9 @@
     <string name="repassword">Ulangi Password</string>
     <string name="daftar">Daftar</string>
     <string name="masuk">Masuk</string>
+    <string name="disini">Disini</string>
+    <string name="sudahdaftar">Sudah pernah daftar? Login </string>
+    <string name="belumdaftar">Belum pernah daftar? Daftar </string>
 
     //warning
     <string name="nama_kosong">Nama lengkap tidak boleh kosong</string>
