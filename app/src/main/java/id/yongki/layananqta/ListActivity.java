@@ -58,7 +58,7 @@ public class ListActivity extends AppCompatActivity {
                                        (String) document.get("nama"),
                                        (String) document.get("nohp"),
                                        (String) document.get("alamat"),
-                                       (String) document.get("deskripsi")
+                                       (String) document.get("email")
 
                                ));
                                 recyclerAdapter.notifyDataSetChanged();
@@ -83,7 +83,8 @@ public class ListActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.action_signout) {
             firebaseAuth.signOut();
-            startActivity(new Intent(getApplicationContext(), RegisterActivity.class));
+            startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+            finish();
             return true;
         }
         return super.onOptionsItemSelected(item);

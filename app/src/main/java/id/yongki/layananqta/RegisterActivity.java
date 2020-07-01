@@ -24,7 +24,6 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 
-
 public class RegisterActivity extends AppCompatActivity {
 
     private EditText email, password, repassword;
@@ -32,6 +31,8 @@ public class RegisterActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     boolean isPlay = false;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,15 +47,17 @@ public class RegisterActivity extends AppCompatActivity {
         ImageView icEye = findViewById(R.id.register_ic_eye);
 
 
+
+
         icEye.setBackgroundResource(R.drawable.ic_eye_hide);
 
         icEye.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isPlay){
+                if (isPlay) {
                     v.setBackgroundResource(R.drawable.ic_eye_hide);
                     password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                }else{
+                } else {
                     v.setBackgroundResource(R.drawable.ic_outline_eye_24);
                     password.setTransformationMethod(PasswordTransformationMethod.getInstance());
                 }
@@ -63,22 +66,22 @@ public class RegisterActivity extends AppCompatActivity {
         });
 
 
-
         regisBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                final String gemail = email.getText().toString();
+                final String gpassword = password.getText().toString();
+                final String grepassword = repassword.getText().toString();
+                final String semail = getString(R.string.email_kosong);
+                final String spassword = getString(R.string.pass_kosong);
+                final String spassTidakCocok = getString(R.string.pass_tidak_cocok);
 
                 progressBar.setVisibility(View.VISIBLE);
-                String gemail = email.getText().toString();
-                String gpassword = password.getText().toString();
-                String grepassword = repassword.getText().toString();
-                String semail = getString(R.string.email_kosong);
-                String spassword = getString(R.string.pass_kosong);
-                String spassTidakCocok = getString(R.string.pass_tidak_cocok);
 
                 if (gemail.isEmpty()) {
                     email.setError(semail);
                     progressBar.setVisibility(View.GONE);
+
 
                 } else if (gpassword.isEmpty()) {
                     password.setError(spassword);
@@ -91,7 +94,6 @@ public class RegisterActivity extends AppCompatActivity {
                             .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                                 @Override
                                 public void onSuccess(AuthResult authResult) {
-
                                     showDialog();
                                 }
                             })
@@ -112,11 +114,13 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
-                
+                finish();
+
             }
         });
     }
-    private void showDialog(){
+
+    private void showDialog() {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
                 this);
 
@@ -126,13 +130,12 @@ public class RegisterActivity extends AppCompatActivity {
         // set pesan dari dialog
         alertDialogBuilder
                 .setMessage("Anda berhasil mendaftar, klik Ok untuk melakukan login!")
-              //.setIcon(R.mipmap.ic_launcher)
+                //.setIcon(R.mipmap.ic_launcher)
                 .setCancelable(false)
                 .setNeutralButton("Ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         startActivity(new Intent(getApplicationContext(), LoginActivity.class));
-
                         finish();
                     }
                 });

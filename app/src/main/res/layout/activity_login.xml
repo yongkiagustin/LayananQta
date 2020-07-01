@@ -10,17 +10,17 @@
 
 
     <LinearLayout
-        android:layout_alignParentTop="true"
-        android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
         android:gravity="center"
         android:orientation="vertical">
 
         <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/ic_build_black_24dp" />
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:src="@drawable/img_logo_secondary" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -31,7 +31,6 @@
             android:textColor="@color/colorPrimary"
             android:textSize="16sp"
             android:textStyle="bold" />
-
 
 
         <com.google.android.material.textfield.TextInputLayout
@@ -55,29 +54,33 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="horizontal">
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
 
-            <EditText
-                android:id="@+id/login_etpassword"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="14dp"
-                android:layout_marginRight="14dp"
-                android:autofillHints="@string/password"
-                android:hint="@string/password"
-                android:inputType="textPassword"
-                android:textSize="20sp" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_weight="1">
+
+                <EditText
+                    android:id="@+id/login_etpassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="14dp"
+                    android:layout_marginRight="14dp"
+                    android:autofillHints="@string/password"
+                    android:hint="@string/password"
+                    android:inputType="textPassword"
+                    android:textSize="20sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
             <ImageView
+                android:id="@+id/login_ic_eye"
                 android:layout_width="60dp"
                 android:layout_height="40dp"
-                android:contentDescription="@string/deskripsi"
                 android:layout_weight="1"
-                android:id="@+id/login_ic_eye"/>
+                android:clickable="true"
+                android:contentDescription="@string/deskripsi" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -95,12 +98,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:textAllCaps="true"
-                android:textStyle="bold"
+                android:clickable="true"
                 android:text="@string/disini"
-                android:textColor="@color/colorPrimary" />
+                android:textAllCaps="true"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold" />
         </LinearLayout>
     </LinearLayout>
+
     <ProgressBar
         android:id="@+id/login_progressbar"
         android:layout_width="50dp"
@@ -119,6 +124,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="24dp"
         android:background="@drawable/next_button"
+        android:clickable="true"
         android:text="@string/masuk"
         android:textColor="@android:color/white" />
 

@@ -19,13 +19,14 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
     private List<UsersModel> albumList;
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        TextView nama,nohp,alamat;
+        TextView nama,nohp,alamat, email;
         public MyViewHolder(View v) {
             super(v);
 
             nama = (TextView)v.findViewById(R.id.rv_tvNama);
             nohp = (TextView)v.findViewById(R.id.rv_tvnohp);
             alamat = (TextView)v.findViewById(R.id.rv_tv_alamat);
+            email = (TextView)v.findViewById(R.id.rv_tv_Email);
         }
     }
     public RecyclerAdapter(Context mContext, List<UsersModel> albumList) {
@@ -44,7 +45,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
         final UsersModel album = albumList.get(position);
         holder.nama.setText(album.name);
         holder.nohp.setText(album.noHp);
-        holder.alamat.setText(album.description);
+        holder.alamat.setText(album.alamat);
+        holder.email.setText(album.email);
     }
     @Override
     public int getItemCount() {

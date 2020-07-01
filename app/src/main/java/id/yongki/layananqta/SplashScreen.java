@@ -23,8 +23,6 @@ public class SplashScreen extends AppCompatActivity {
         setContentView(R.layout.activity_splash_screen);
         logo = findViewById(R.id.ss_logo);
 
-        doBounce(logo);
-
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -41,10 +39,5 @@ public class SplashScreen extends AppCompatActivity {
 
     }
 
-    private void doBounce(View targetView) {
-        ObjectAnimator animator = ObjectAnimator.ofFloat(targetView, "translationY", 0, 50, 0);
-        animator.setStartDelay(500);
-        animator.setDuration(1500);
-        animator.start();
-    }
+
 }

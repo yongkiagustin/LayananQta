@@ -3,8 +3,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="id.kudzoza.findtechnician.MainActivity">
     <item
+        android:id="@+id/action_Data_diri"
+        android:orderInCategory="100"
+        android:title="Akun"
+        app:showAsAction="never" /><item
+        android:id="@+id/action_ganti_password"
+        android:orderInCategory="100"
+        android:title="Ubah Kata Sandi"
+        app:showAsAction="never" />
+    <item
         android:id="@+id/action_signout"
         android:orderInCategory="100"
-        android:title="Sign Out"
+        android:title="Keluar"
         app:showAsAction="never" />
 </menu>

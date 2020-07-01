@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="24dp"
-    tools:context=".FirstBiodataActivity">
+    tools:context=".FormBiodataActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:text="Hampir Sampai!"
+            android:text="Isi Data Diri"
             android:textAlignment="center"
             android:textColor="@color/colorPrimary"
             android:textSize="24sp"
@@ -29,10 +29,29 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="24dp"
             android:layout_marginVertical="24dp"
-            android:text="Sebelum ke tahap selanjutnya, yuk isi biodatamu terlebih dahulu!"
+            android:text="Sebelum ke tahap selanjutnya, yuk isi data diri kamu terlebih dahulu!"
             android:textAlignment="center"
             android:textColor="@color/colorPrimary"
             android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/biodata_imgProfile"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="8dp"
+            android:src="@drawable/img_default_user" />
+
+        <TextView
+            android:id="@+id/biodata_labelChangePhoto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:text="Ganti Foto"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold" />
+
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
@@ -45,7 +64,7 @@
                 android:layout_marginLeft="14dp"
                 android:layout_marginRight="14dp"
                 android:hint="@string/nama_lengkap"
-                android:inputType="text"
+                android:inputType="textPersonName"
                 android:textSize="20sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -60,7 +79,7 @@
                 android:layout_marginLeft="14dp"
                 android:layout_marginRight="14dp"
                 android:hint="@string/nohp"
-                android:inputType="text"
+                android:inputType="number"
                 android:textSize="20sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -75,20 +94,21 @@
                 android:layout_marginLeft="14dp"
                 android:layout_marginRight="14dp"
                 android:hint="@string/alamat"
-                android:inputType="text"
+                android:inputType="textMultiLine"
                 android:textSize="20sp" />
         </com.google.android.material.textfield.TextInputLayout>
+
     </LinearLayout>
 
     <Button
-        android:id="@+id/register_regisbtn"
+        android:id="@+id/fb_nextbtn"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="24dp"
         android:background="@drawable/next_button"
-        android:text="@string/daftar"
+        android:text="@string/next"
         android:textColor="@android:color/white" />
 
 

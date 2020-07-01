@@ -19,9 +19,9 @@
         android:orientation="vertical">
 
         <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/ic_build_black_24dp" />
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:src="@drawable/img_logo" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -74,11 +74,12 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <ImageView
+                android:id="@+id/register_ic_eye"
                 android:layout_width="60dp"
                 android:layout_height="40dp"
-                android:contentDescription="@string/deskripsi"
                 android:layout_weight="1"
-                android:id="@+id/register_ic_eye"/>
+                android:clickable="true"
+                android:contentDescription="@string/deskripsi" />
         </LinearLayout>
 
 
@@ -115,6 +116,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:clickable="true"
                 android:text="@string/disini"
                 android:textAllCaps="true"
                 android:textColor="@color/colorPrimary"
@@ -142,6 +144,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="24dp"
         android:background="@drawable/next_button"
+        android:clickable="true"
         android:text="@string/daftar"
         android:textColor="@android:color/white" />
 </RelativeLayout>
