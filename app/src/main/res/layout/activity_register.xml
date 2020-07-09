@@ -21,7 +21,7 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:src="@drawable/img_logo" />
+            android:src="@drawable/img_logo_secondary" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -145,6 +145,7 @@
         android:layout_marginBottom="24dp"
         android:background="@drawable/next_button"
         android:clickable="true"
+        android:focusable="true"
         android:text="@string/daftar"
         android:textColor="@android:color/white" />
 </RelativeLayout>
