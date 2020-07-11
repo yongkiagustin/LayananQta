@@ -1,15 +1,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context="id.kudzoza.findtechnician.MainActivity">
+    xmlns:tools="http://schemas.android.com/tools">
     <item
-        android:id="@+id/action_Data_diri"
+        android:id="@+id/action_account"
         android:orderInCategory="100"
         android:title="Akun"
-        app:showAsAction="never" /><item
-        android:id="@+id/action_ganti_password"
-        android:orderInCategory="100"
-        android:title="Ubah Kata Sandi"
         app:showAsAction="never" />
     <item
         android:id="@+id/action_signout"

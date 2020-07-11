@@ -86,6 +86,8 @@ public class ListActivity extends AppCompatActivity {
             startActivity(new Intent(getApplicationContext(), LoginActivity.class));
             finish();
             return true;
+        }else if(item.getItemId()==R.id.action_account){
+            startActivity(new Intent(getApplicationContext(),AccountActivity.class));
         }
         return super.onOptionsItemSelected(item);
     }
