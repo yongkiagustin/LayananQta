@@ -48,6 +48,7 @@ public class ListActivity extends AppCompatActivity {
     }
     private void readData(){
         db.collection("users")
+                .whereEqualTo("status","active")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -58,7 +59,13 @@ public class ListActivity extends AppCompatActivity {
                                        (String) document.get("nama"),
                                        (String) document.get("nohp"),
                                        (String) document.get("alamat"),
-                                       (String) document.get("email")
+                                       (String) document.get("email"),
+                                       (String)document.get("profesi"),
+                                       (String)document.get("lamakerja"),
+                                       (String)document.get("deskripsi"),
+                                       (String)document.get("status"),
+                                       (String)document.get("profilePic"),
+                                       (String)document.getId()
 
                                ));
                                 recyclerAdapter.notifyDataSetChanged();
@@ -67,6 +74,7 @@ public class ListActivity extends AppCompatActivity {
                             }
                         } else {
                             Log.w("TAG", "Error getting documents.", task.getException());
+
                         }
                     }
                 });

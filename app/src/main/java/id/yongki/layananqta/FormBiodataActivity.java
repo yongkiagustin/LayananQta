@@ -56,7 +56,7 @@ public class FormBiodataActivity extends AppCompatActivity {
     ImageView photo;
     ProgressBar uploadProgress;
     String imageUrl;
-    String status="";
+    String status = "";
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -92,10 +92,10 @@ public class FormBiodataActivity extends AppCompatActivity {
         checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(checkBox.isChecked()){
+                if (checkBox.isChecked()) {
                     technician.setVisibility(View.VISIBLE);
                     status = "pending";
-                }else{
+                } else {
                     technician.setVisibility(View.GONE);
                     status = "nonactive";
                 }
@@ -119,12 +119,6 @@ public class FormBiodataActivity extends AppCompatActivity {
                     etnama.setError("Nama Tidak Boleh Kosong!");
                     uploadProgress.setVisibility(View.GONE);
 
-                } else if (nohp.isEmpty()) {
-                    etnohp.setError("Nomor HP Tidak Boleh Kosong!");
-                    uploadProgress.setVisibility(View.GONE);
-                } else if (alamat.isEmpty()) {
-                    etalamat.setError("Alamat Tidak Boleh Kosong!");
-                    uploadProgress.setVisibility(View.GONE);
                 } else {
 
                     //membuat data user ke firestore
@@ -142,6 +136,7 @@ public class FormBiodataActivity extends AppCompatActivity {
                             .addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
+                                    uploadProgress.setVisibility(View.GONE);
                                     Intent intent = new Intent(FormBiodataActivity.this, ListActivity.class);
                                     startActivity(intent);
                                 }
@@ -149,7 +144,8 @@ public class FormBiodataActivity extends AppCompatActivity {
                             .addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
-                                    Log.w("", "Error adding document", e);
+                                    uploadProgress.setVisibility(View.GONE);
+                                    Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
                                 }
                             });
                 }
@@ -239,6 +235,7 @@ public class FormBiodataActivity extends AppCompatActivity {
             }
         }
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();

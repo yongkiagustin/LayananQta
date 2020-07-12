@@ -7,7 +7,16 @@
         <item name="colorControlNormal">@color/colorPrimary</item>
         <item name="colorControlActivated">@color/colorPrimary</item>
         <item name="colorControlHighlight">@color/colorPrimary</item>
+        <item name="android:textColor">@android:color/black</item>
     </style>
-    <style name="NoActionBarStyle" parent="Theme.AppCompat.Light.NoActionBar"/>
+
+
+    <style name="NoActionBarStyle" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorControlNormal">@color/colorPrimary</item>
+        <item name="colorControlActivated">@color/colorPrimary</item>
+        <item name="colorControlHighlight">@color/colorPrimary</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
 
 </resources>

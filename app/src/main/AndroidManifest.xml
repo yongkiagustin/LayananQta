@@ -27,9 +27,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".LoginActivity" />
-        <activity android:name=".ListActivity" />
+        <activity android:name=".ListActivity"
+            android:label="LIST TEKNISI"/>
         <activity android:name=".RegisterActivity" />
-        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>

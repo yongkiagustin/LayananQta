@@ -73,41 +73,41 @@
                     android:textSize="20sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <EditText
-                    android:id="@+id/fb_etnohp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="14dp"
-                    android:layout_marginRight="14dp"
-                    android:hint="@string/nohp"
-                    android:inputType="number"
-                    android:textSize="20sp" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <EditText
-                    android:id="@+id/fb_etalamat"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="14dp"
-                    android:layout_marginRight="14dp"
-                    android:hint="@string/alamat"
-                    android:inputType="textMultiLine"
-                    android:textSize="20sp" />
-            </com.google.android.material.textfield.TextInputLayout>
-
             <LinearLayout
                 android:id="@+id/fb_technician"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/fb_etnohp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="14dp"
+                        android:layout_marginRight="14dp"
+                        android:hint="@string/nohp"
+                        android:inputType="number"
+                        android:textSize="20sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/fb_etalamat"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="14dp"
+                        android:layout_marginRight="14dp"
+                        android:hint="@string/alamat"
+                        android:inputType="textMultiLine"
+                        android:textSize="20sp" />
+                </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
@@ -166,18 +166,19 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:text="Daftar Teknisi"/>
+                    android:text="Daftar Menjadi Teknisi" />
             </LinearLayout>
         </LinearLayout>
+
         <ProgressBar
             android:id="@+id/fb_progressbar"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_above="@+id/fb_nextbtn"
             android:layout_centerInParent="true"
+            android:layout_gravity="center_horizontal"
             android:layout_marginTop="24dp"
             android:layout_marginBottom="24dp"
-            android:layout_gravity="center_horizontal"
             android:visibility="gone" />
 
         <Button
