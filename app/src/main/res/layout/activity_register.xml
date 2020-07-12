@@ -143,7 +143,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="24dp"
-        android:background="@drawable/next_button"
+        android:background="@drawable/main_button"
         android:clickable="true"
         android:focusable="true"
         android:text="@string/daftar"

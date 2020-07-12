@@ -145,8 +145,11 @@ public class AccountActivity extends AppCompatActivity {
                         labelstatus.setText(status);
                         Glide.with(AccountActivity.this).load(usersModel.profilePic).into(photo);
 
-                        //TODO jika status=nonaktif, checkbox visible; jika status=pending, label STATUS:MENUNGGU KONFIRMASI ADMIN;
-                        //TODO jika status = active, radio box active nonactive muncul
+                        //TODO membuat fungsi radiobutton
+                        //todo forgot password
+                        // todo ganti password
+                        //todo ganti email (opsional)
+                        //todo disable ganti foto
                         //kondisi status
                         if(status.equalsIgnoreCase("active")){
                             radioGroup.setVisibility(View.VISIBLE);
