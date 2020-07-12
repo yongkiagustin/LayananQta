@@ -28,6 +28,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -142,6 +143,7 @@ public class AccountActivity extends AppCompatActivity {
                         etdeskripsi.setText(usersModel.deskripsi);
                         status = usersModel.status; //active, nonactive, pending
                         labelstatus.setText(status);
+                        Glide.with(AccountActivity.this).load(usersModel.profilePic).into(photo);
 
                         //TODO jika status=nonaktif, checkbox visible; jika status=pending, label STATUS:MENUNGGU KONFIRMASI ADMIN;
                         //TODO jika status = active, radio box active nonactive muncul
