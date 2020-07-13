@@ -124,17 +124,17 @@
         </LinearLayout>
 
 
+        <ProgressBar
+            android:id="@+id/register_progressbar"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_above="@+id/register_regisbtn"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
+            android:visibility="invisible" />
     </LinearLayout>
 
-    <ProgressBar
-        android:id="@+id/register_progressbar"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_above="@+id/register_regisbtn"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="24dp"
-        android:layout_marginBottom="24dp"
-        android:visibility="invisible" />
 
     <Button
         android:id="@+id/register_regisbtn"
@@ -143,7 +143,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="24dp"
-        android:background="@drawable/next_button"
+        android:background="@drawable/main_button"
         android:clickable="true"
         android:focusable="true"
         android:text="@string/daftar"

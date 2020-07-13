@@ -26,13 +26,11 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.util.HashMap;
-import java.util.Map;
 
 
 public class RegisterActivity extends AppCompatActivity {
 
-    public EditText etnama, etnohp, etalamat, etemail, etpassword, etrepassword;
+    public EditText etemail, etpassword, etrepassword;
     private ProgressBar progressBar;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -48,9 +46,6 @@ public class RegisterActivity extends AppCompatActivity {
         TextView login = findViewById(R.id.register_tvlogin);
         progressBar = findViewById(R.id.register_progressbar);
         Button regisBtn = findViewById(R.id.register_regisbtn);
-        etnama = findViewById(R.id.register_etnama);
-        etnohp = findViewById(R.id.register_etnohp);
-        etalamat = findViewById(R.id.register_etalamat);
         etemail = findViewById(R.id.register_etemail);
         etpassword = findViewById(R.id.register_etpassword);
         etrepassword = findViewById(R.id.register_etrepassword);
@@ -77,9 +72,6 @@ public class RegisterActivity extends AppCompatActivity {
         regisBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String gnama = etnama.getText().toString();
-                final String gnohp = etnohp.getText().toString();
-                final String galamat = etalamat.getText().toString();
                 final String gemail = etemail.getText().toString();
                 String gpassword = etpassword.getText().toString();
                 String grepassword = etrepassword.getText().toString();
@@ -107,24 +99,6 @@ public class RegisterActivity extends AppCompatActivity {
                             .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                                 @Override
                                 public void onSuccess(AuthResult authResult) {
-//                                    //membuat data user ke firestore
-//                                    Map<String, Object> user = new HashMap<>();
-//                                    user.put("nama", gnama);
-//                                    user.put("email", gemail);
-//                                    user.put("nohp", gnohp);
-//                                    user.put("alamat", galamat);
-//                                    db.collection("users").document(mUser.getUid()).set(user)
-//                                            .addOnSuccessListener(new OnSuccessListener<Void>() {
-//                                                @Override
-//                                                public void onSuccess(Void aVoid) {
-//                                                }
-//                                            })
-//                                            .addOnFailureListener(new OnFailureListener() {
-//                                                @Override
-//                                                public void onFailure(@NonNull Exception e) {
-//                                                    Log.w("", "Error adding document", e);
-//                                                }
-//                                            });
                                     showDialog();
                                 }
                             })

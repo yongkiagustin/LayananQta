@@ -43,8 +43,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
         final UsersModel album = albumList.get(position);
-        holder.nama.setText(album.name);
-        holder.nohp.setText(album.noHp);
+        holder.nama.setText(album.nama);
+        holder.nohp.setText(album.nohp);
         holder.alamat.setText(album.alamat);
         holder.email.setText(album.email);
     }
