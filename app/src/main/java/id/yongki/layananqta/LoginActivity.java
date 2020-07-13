@@ -45,6 +45,7 @@ public class LoginActivity extends AppCompatActivity {
         etPassword = findViewById(R.id.login_etpassword);
         TextView daftar = findViewById(R.id.login_tvregister);
         ImageView icEye = findViewById(R.id.login_ic_eye);
+        TextView lupaPassword = findViewById(R.id.login_labelforgotPassword);
 
 
         icEye.setBackgroundResource(R.drawable.ic_eye_hide);
@@ -60,6 +61,12 @@ public class LoginActivity extends AppCompatActivity {
                     etPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
                 }
                 isPlay = !isPlay;
+            }
+        });
+        lupaPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), ResetPasswordActivity.class));
             }
         });
 

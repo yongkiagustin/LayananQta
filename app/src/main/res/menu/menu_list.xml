@@ -7,6 +7,11 @@
         android:title="Akun"
         app:showAsAction="never" />
     <item
+        android:id="@+id/action_changepassword"
+        android:orderInCategory="100"
+        android:title="Ganti Password"
+        app:showAsAction="never" />
+    <item
         android:id="@+id/action_signout"
         android:orderInCategory="100"
         android:title="Keluar"

@@ -153,14 +153,21 @@ public class AccountActivity extends AppCompatActivity {
                         etdeskripsi.setText(usersModel.deskripsi);
                         status = usersModel.status; //active, nonactive, pending
                         labelstatus.setText(status);
-                        imageUrl = usersModel.profilePic;
                         Glide.with(AccountActivity.this).load(usersModel.profilePic).into(photo);
+                        if(usersModel.profilePic==null){
+                            photo.setImageResource(R.drawable.img_default_user);
+                        }else{
+                            imageUrl = usersModel.profilePic;
+                        }
 
                         //TODO membuat fungsi radiobutton done
-                        //todo forgot password
-                        // todo ganti password
+                        //todo forgot password done
+                        //todo ganti password done
+
+                        //todo disable ganti foto done
+                        //todo clickable cardview
                         //todo ganti email (opsional)
-                        //todo disable ganti foto
+
                         //kondisi status
                         if (status.equalsIgnoreCase("active")) {
                             radioGroup.setVisibility(View.VISIBLE);
@@ -306,7 +313,7 @@ public class AccountActivity extends AppCompatActivity {
         if (checkBox.isChecked()) {
             status = "pending";
         } else {
-            status = "nonactive";
+            status = "Nonactive";
         }
 
     }

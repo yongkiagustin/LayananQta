@@ -99,6 +99,8 @@ public class ListActivity extends AppCompatActivity {
             return true;
         }else if(item.getItemId()==R.id.action_account){
             startActivity(new Intent(getApplicationContext(),AccountActivity.class));
+        }else if(item.getItemId()==R.id.action_changepassword){
+            startActivity(new Intent(getApplicationContext(),ChangePasswordActivity.class));
         }
         return super.onOptionsItemSelected(item);
     }
