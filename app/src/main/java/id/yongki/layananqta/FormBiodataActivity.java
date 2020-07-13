@@ -43,8 +43,6 @@ public class FormBiodataActivity extends AppCompatActivity {
         Button nextBtn = findViewById(R.id.fb_nextbtn);
 
 
-
-// TODO harus pake tombol
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
