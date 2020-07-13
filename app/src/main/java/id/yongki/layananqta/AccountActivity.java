@@ -53,7 +53,7 @@ import id.yongki.layananqta.Model.UsersModel;
 
 public class AccountActivity extends AppCompatActivity {
     Button changeProfile, cancel, saveChange;
-    EditText etnama, etnohp, etalamat, etemail, etprofesi, etlamaKerja, etdeskripsi;
+    EditText etnama, etnohp,etkota, etalamat, etemail, etprofesi, etlamaKerja, etdeskripsi;
     TextView labelstatus, labelpending, labelChangePhoto;
     String status = "";
     String imageUrl;
@@ -62,7 +62,7 @@ public class AccountActivity extends AppCompatActivity {
     CheckBox checkBox;
     ProgressBar uploadProgress;
     LinearLayout llcheckbox;
-    RadioButton rbactive, rbnonactive;
+    RadioButton radioButton, radioActive, radioNonactive;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -77,6 +77,7 @@ public class AccountActivity extends AppCompatActivity {
 
         etnama = findViewById(R.id.account_etnama);
         etnohp = findViewById(R.id.account_etnohp);
+        etkota = findViewById(R.id.account_etkota);
         etalamat = findViewById(R.id.account_etalamat);
         etemail = findViewById(R.id.account_etemail);
         etprofesi = findViewById(R.id.account_etprofesi);
@@ -90,6 +91,8 @@ public class AccountActivity extends AppCompatActivity {
         labelChangePhoto = findViewById(R.id.account_label_change_photo);
         photo = findViewById(R.id.account_imgprofile);
         uploadProgress = findViewById(R.id.account_progressbar);
+        radioActive = findViewById(R.id.account_active);
+        radioNonactive = findViewById(R.id.account_nonactive);
 
         changeProfile = findViewById(R.id.account_changeprofile);
         cancel = findViewById(R.id.account_cancel);
@@ -100,10 +103,15 @@ public class AccountActivity extends AppCompatActivity {
         changeProfile.setVisibility(View.VISIBLE);
         cancel.setVisibility(View.GONE);
         saveChange.setVisibility(View.GONE);
+        labelChangePhoto.setClickable(false);
+        radioActive.setClickable(false);
+        radioNonactive.setClickable(false);
+        checkBox.setClickable(false);
 
 
         etnama.setEnabled(false);
         etnohp.setEnabled(false);
+        etkota.setEnabled(false);
         etalamat.setEnabled(false);
         etemail.setEnabled(false);
         etprofesi.setEnabled(false);
@@ -125,6 +133,7 @@ public class AccountActivity extends AppCompatActivity {
                         UsersModel usersModel = new UsersModel(
                                 (String) document.get("nama"),
                                 (String) document.get("nohp"),
+                                (String) document.get("kota"),
                                 (String) document.get("alamat"),
                                 (String) document.get("email"),
                                 (String) document.get("profesi"),
@@ -136,6 +145,7 @@ public class AccountActivity extends AppCompatActivity {
                         );
                         etnama.setText(usersModel.nama);
                         etnohp.setText(usersModel.nohp);
+                        etkota.setText(usersModel.kota);
                         etalamat.setText(usersModel.alamat);
                         etemail.setText(usersModel.email);
                         etprofesi.setText(usersModel.profesi);
@@ -143,23 +153,26 @@ public class AccountActivity extends AppCompatActivity {
                         etdeskripsi.setText(usersModel.deskripsi);
                         status = usersModel.status; //active, nonactive, pending
                         labelstatus.setText(status);
+                        imageUrl = usersModel.profilePic;
                         Glide.with(AccountActivity.this).load(usersModel.profilePic).into(photo);
 
-                        //TODO membuat fungsi radiobutton
+                        //TODO membuat fungsi radiobutton done
                         //todo forgot password
                         // todo ganti password
                         //todo ganti email (opsional)
                         //todo disable ganti foto
                         //kondisi status
-                        if(status.equalsIgnoreCase("active")){
+                        if (status.equalsIgnoreCase("active")) {
                             radioGroup.setVisibility(View.VISIBLE);
+                            radioButton = findViewById(R.id.account_active);
+                            radioButton.setChecked(true);
                             checkBox.setVisibility(View.GONE);
                             labelpending.setVisibility(View.GONE);
-                        }else if(status.equalsIgnoreCase("pending")){
+                        } else if (status.equalsIgnoreCase("pending")) {
                             radioGroup.setVisibility(View.GONE);
                             checkBox.setVisibility(View.GONE);
                             labelpending.setVisibility(View.VISIBLE);
-                        }else {
+                        } else {
                             radioGroup.setVisibility(View.GONE);
                             checkBox.setVisibility(View.VISIBLE);
                             labelpending.setVisibility(View.GONE);
@@ -176,22 +189,23 @@ public class AccountActivity extends AppCompatActivity {
             }
         });
 
-
-
-
         changeProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 //              BUTTON CHANGE PROFILE
 
-
                 etnama.setEnabled(true);
                 etnohp.setEnabled(true);
+                etkota.setEnabled(true);
                 etalamat.setEnabled(true);
                 etprofesi.setEnabled(true);
                 etlamaKerja.setEnabled(true);
                 etdeskripsi.setEnabled(true);
                 etemail.setEnabled(true);
+                labelChangePhoto.setClickable(true);
+                radioActive.setClickable(true);
+                radioNonactive.setClickable(true);
+                checkBox.setClickable(true);
 
 
                 changeProfile.setVisibility(View.GONE);
@@ -206,11 +220,16 @@ public class AccountActivity extends AppCompatActivity {
 
                 etnama.setEnabled(false);
                 etnohp.setEnabled(false);
+                etkota.setEnabled(false);
                 etalamat.setEnabled(false);
                 etprofesi.setEnabled(false);
                 etlamaKerja.setEnabled(false);
                 etdeskripsi.setEnabled(false);
                 etemail.setEnabled(false);
+                labelChangePhoto.setClickable(false);
+                radioActive.setClickable(false);
+                radioNonactive.setClickable(false);
+                checkBox.setClickable(false);
 
                 changeProfile.setVisibility(View.VISIBLE);
                 cancel.setVisibility(View.GONE);
@@ -224,11 +243,16 @@ public class AccountActivity extends AppCompatActivity {
 
                 etnama.setEnabled(false);
                 etnohp.setEnabled(false);
+                etkota.setEnabled(false);
                 etalamat.setEnabled(false);
                 etprofesi.setEnabled(false);
                 etlamaKerja.setEnabled(false);
                 etdeskripsi.setEnabled(false);
                 etemail.setEnabled(false);
+                labelChangePhoto.setClickable(false);
+                radioActive.setClickable(false);
+                radioNonactive.setClickable(false);
+                checkBox.setClickable(false);
 
                 changeProfile.setVisibility(View.VISIBLE);
                 cancel.setVisibility(View.GONE);
@@ -237,6 +261,7 @@ public class AccountActivity extends AppCompatActivity {
                 String nama = etnama.getText().toString();
                 String email = etemail.getText().toString();
                 String nohp = etnohp.getText().toString();
+                String kota = etkota.getText().toString();
                 String alamat = etalamat.getText().toString();
                 String profesi = etprofesi.getText().toString();
                 String lamakerja = etlamaKerja.getText().toString();
@@ -248,11 +273,12 @@ public class AccountActivity extends AppCompatActivity {
                 user.put("nama", nama);
                 user.put("email", email);
                 user.put("nohp", nohp);
+                user.put("kota", kota);
                 user.put("alamat", alamat);
                 user.put("profesi", profesi);
                 user.put("lamakerja", lamakerja);
                 user.put("deskripsi", deskripsi);
-                user.put("status",status);
+                user.put("status", status);
                 user.put("profilePic", imageUrl);
                 db.collection("users").document(mUser.getUid()).set(user)
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -272,7 +298,27 @@ public class AccountActivity extends AppCompatActivity {
             }
         });
 
+
     }
+
+    //fungsi checkbox
+    public void checkbox(View v) {
+        if (checkBox.isChecked()) {
+            status = "pending";
+        } else {
+            status = "nonactive";
+        }
+
+    }
+
+    //fungsi radiobutton
+    public void onRadioButtonClicked(View v) {
+        int radioId = radioGroup.getCheckedRadioButtonId();
+        radioButton = findViewById(radioId);
+        status = radioButton.getText().toString();
+    }
+
+
     void setOnClickButton() {
         labelChangePhoto.setOnClickListener(new View.OnClickListener() {
             @Override

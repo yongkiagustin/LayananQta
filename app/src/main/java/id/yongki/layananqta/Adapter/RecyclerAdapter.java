@@ -19,14 +19,15 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
     private List<UsersModel> albumList;
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        TextView nama,nohp,alamat, email;
+        TextView nama,kota,alamat, profesi, lamaKerja;
         public MyViewHolder(View v) {
             super(v);
 
-            nama = (TextView)v.findViewById(R.id.rv_tvNama);
-            nohp = (TextView)v.findViewById(R.id.rv_tvnohp);
-            alamat = (TextView)v.findViewById(R.id.rv_tv_alamat);
-            email = (TextView)v.findViewById(R.id.rv_tv_Email);
+            nama = (TextView)v.findViewById(R.id.rv_labelnama);
+            kota = (TextView)v.findViewById(R.id.rv_labelkota);
+            alamat = (TextView)v.findViewById(R.id.rv_labelalamat);
+            profesi = (TextView)v.findViewById(R.id.rv_labelprofesi);
+            lamaKerja = (TextView)v.findViewById(R.id.rv_labellamakerja);
         }
     }
     public RecyclerAdapter(Context mContext, List<UsersModel> albumList) {
@@ -44,9 +45,10 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
     public void onBindViewHolder(final MyViewHolder holder, int position) {
         final UsersModel album = albumList.get(position);
         holder.nama.setText(album.nama);
-        holder.nohp.setText(album.nohp);
+        holder.kota.setText(album.kota);
         holder.alamat.setText(album.alamat);
-        holder.email.setText(album.email);
+        holder.profesi.setText(album.profesi);
+        holder.lamaKerja.setText(album.lamaKerja);
     }
     @Override
     public int getItemCount() {

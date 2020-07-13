@@ -49,7 +49,7 @@ import java.util.Objects;
 
 public class FormBiodataActivity extends AppCompatActivity {
 
-    EditText etnama, etnohp, etalamat, etprofesi, etlamakerja, etdeskripsi;
+    EditText etnama, etnohp,etkota, etalamat, etprofesi, etlamakerja, etdeskripsi;
     CheckBox checkBox;
     LinearLayout technician;
     TextView labelChangePhoto;
@@ -72,6 +72,7 @@ public class FormBiodataActivity extends AppCompatActivity {
 
         etnama = findViewById(R.id.fb_etnama);
         etnohp = findViewById(R.id.fb_etnohp);
+        etkota = findViewById(R.id.fb_etkota);
         etalamat = findViewById(R.id.fb_etalamat);
         photo = findViewById(R.id.biodata_imgProfile);
         labelChangePhoto = findViewById(R.id.biodata_labelChangePhoto);
@@ -109,6 +110,7 @@ public class FormBiodataActivity extends AppCompatActivity {
                 uploadProgress.setVisibility(View.VISIBLE);
                 String nama = etnama.getText().toString();
                 String nohp = etnohp.getText().toString();
+                String kota = etkota.getText().toString();
                 String alamat = etalamat.getText().toString();
                 String profesi = etprofesi.getText().toString();
                 String lamakerja = etlamakerja.getText().toString();
@@ -126,6 +128,7 @@ public class FormBiodataActivity extends AppCompatActivity {
                     user.put("nama", nama);
                     user.put("email", email);
                     user.put("nohp", nohp);
+                    user.put("kota", kota);
                     user.put("alamat", alamat);
                     user.put("profesi",profesi);
                     user.put("lamakerja",lamakerja);

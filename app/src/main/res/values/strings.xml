@@ -16,6 +16,21 @@
     <string name="sudahdaftar">Sudah pernah daftar? Login</string>
     <string name="belumdaftar">Belum pernah daftar? Daftar</string>
     <string name="next">Next</string>
+    <string name="kota">Kota</string>
+    <string name="profesi">Profesi</string>
+    <string name="deskripsi_pengalaman">Deskripsi Pengalaman</string>
+    <string name="lama_kerja">Lama Bekerja</string>
+    <string name="daftar_menjadi_teknisi">Daftar Menjadi Teknisi</string>
+    <string name="ganti_foto">Ganti Foto</string>
+    <string name="sebelum_ketahap_selanjutnya">Sebelum ke tahap selanjutnya, yuk isi data diri kamu terlebih dahulu!</string>
+    <string name="isi_data_diri">Isi Data Diri</string>
+    <string name="menunggu_persetujuan_admin">MENUNGGU PERSETUJUAN ADMIN</string>
+    <string name="aktif">Active</string>
+    <string name="nonaktif">Nonactive</string>
+    <string name="ganti">Ganti</string>
+    <string name="simpan">Simpan</string>
+    <string name="batal">Batal</string>
+    <color name="logo">Logo</color>
 
     //warning
     <string name="nama_kosong">Nama lengkap tidak boleh kosong</string>

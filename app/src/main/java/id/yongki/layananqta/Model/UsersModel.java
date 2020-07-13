@@ -2,10 +2,11 @@ package id.yongki.layananqta.Model;
 
 
 public class UsersModel {
-    public UsersModel(String nama, String nohp, String alamat, String email, String profesi, String lamaKerja, String deskripsi,String status, String profilePic, String docid) {
+    public UsersModel(String nama, String nohp,String kota, String alamat, String email, String profesi, String lamaKerja, String deskripsi,String status, String profilePic, String docid) {
         this.nama = nama;
         this.nohp = nohp;
         this.email = email;
+        this.kota = kota;
         this.alamat = alamat;
         this.profesi = profesi;
         this.lamaKerja = lamaKerja;
@@ -18,6 +19,7 @@ public class UsersModel {
     public String nama;
     public String nohp;
     public String email;
+    public String kota;
     public String alamat;
     public String profesi;
     public String lamaKerja;

@@ -16,8 +16,10 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.core.OrderBy;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -48,7 +50,7 @@ public class ListActivity extends AppCompatActivity {
     }
     private void readData(){
         db.collection("users")
-                .whereEqualTo("status","active")
+                .whereEqualTo("status","Active")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -58,6 +60,7 @@ public class ListActivity extends AppCompatActivity {
                                usersList.add(new UsersModel(
                                        (String) document.get("nama"),
                                        (String) document.get("nohp"),
+                                       (String) document.get("kota"),
                                        (String) document.get("alamat"),
                                        (String) document.get("email"),
                                        (String)document.get("profesi"),

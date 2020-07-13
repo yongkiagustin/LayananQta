@@ -18,6 +18,7 @@
         android:orientation="vertical">
 
         <ImageView
+            android:contentDescription="logo"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:src="@drawable/img_logo_secondary" />
@@ -78,6 +79,7 @@
                 android:layout_height="40dp"
                 android:layout_weight="1"
                 android:clickable="true"
+                android:focusable="true"
                 android:contentDescription="@string/deskripsi" />
         </LinearLayout>
 
@@ -89,7 +91,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="12dp"
+                android:layout_marginStart="12dp"
                 android:layout_marginTop="10dp"
                 android:text="@string/belumdaftar" />
 
@@ -99,6 +101,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:clickable="true"
+                android:focusable="true"
                 android:text="@string/disini"
                 android:textAllCaps="true"
                 android:textColor="@color/colorPrimary"
@@ -126,6 +129,7 @@
         android:layout_marginBottom="24dp"
         android:background="@drawable/main_button"
         android:clickable="true"
+        android:focusable="true"
         android:text="@string/masuk"
         android:textColor="@android:color/white" />
 

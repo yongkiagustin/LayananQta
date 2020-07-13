@@ -79,6 +79,7 @@
                 android:layout_height="40dp"
                 android:layout_weight="1"
                 android:clickable="true"
+                android:focusable="true"
                 android:contentDescription="@string/deskripsi" />
         </LinearLayout>
 
@@ -107,7 +108,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="12dp"
+                android:layout_marginStart="12dp"
                 android:layout_marginTop="10dp"
                 android:text="@string/sudahdaftar" />
 
@@ -117,6 +118,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:clickable="true"
+                android:focusable="true"
                 android:text="@string/disini"
                 android:textAllCaps="true"
                 android:textColor="@color/colorPrimary"
@@ -128,8 +130,6 @@
             android:id="@+id/register_progressbar"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_above="@+id/register_regisbtn"
-            android:layout_centerInParent="true"
             android:layout_marginTop="24dp"
             android:layout_marginBottom="24dp"
             android:visibility="invisible" />
