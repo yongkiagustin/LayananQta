@@ -10,7 +10,6 @@ import android.os.Bundle;
 
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,17 +22,11 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.FirebaseFirestore;
-
-
 
 public class RegisterActivity extends AppCompatActivity {
 
     public EditText etemail, etpassword, etrepassword;
     private ProgressBar progressBar;
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
-    FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
     private FirebaseAuth mAuth;
     boolean isPlay = false;
 

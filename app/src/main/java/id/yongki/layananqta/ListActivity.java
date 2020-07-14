@@ -12,13 +12,9 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -36,6 +32,7 @@ public class ListActivity extends AppCompatActivity implements RecyclerAdapter.O
     ArrayList<UsersModel> usersList = new ArrayList<>();
     RecyclerAdapter recyclerAdapter;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,33 +47,32 @@ public class ListActivity extends AppCompatActivity implements RecyclerAdapter.O
         readData();
 
     }
-    private void readData(){
+
+    private void readData() {
         db.collection("users")
-                .whereEqualTo("status","Active").orderBy("kota", Query.Direction.ASCENDING)
+                .whereEqualTo("status", "Active").orderBy("kota", Query.Direction.ASCENDING)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : Objects.requireNonNull(task.getResult())) {
-                               usersList.add(new UsersModel(
-                                       (String) document.get("nama"),
-                                       (String) document.get("nohp"),
-                                       (String) document.get("kota"),
-                                       (String) document.get("alamat"),
-                                       (String) document.get("email"),
-                                       (String)document.get("profesi"),
-                                       (String)document.get("lamakerja"),
-                                       (String)document.get("deskripsi"),
-                                       (String)document.get("status"),
-                                       (String)document.get("profilePic"),
-                                       (String)document.getId()
+                                usersList.add(new UsersModel(
+                                        (String) document.get("nama"),
+                                        (String) document.get("nohp"),
+                                        (String) document.get("kota"),
+                                        (String) document.get("alamat"),
+                                        (String) document.get("email"),
+                                        (String) document.get("profesi"),
+                                        (String) document.get("lamakerja"),
+                                        (String) document.get("deskripsi"),
+                                        (String) document.get("status"),
+                                        (String) document.get("profilePic"),
+                                        (String) document.getId()
 
-                               ));
+                                ));
 
                                 recyclerAdapter.notifyDataSetChanged();
-
-
 
                             }
                         } else {
@@ -102,20 +98,18 @@ public class ListActivity extends AppCompatActivity implements RecyclerAdapter.O
             startActivity(new Intent(getApplicationContext(), LoginActivity.class));
             finish();
             return true;
-        }else if(item.getItemId()==R.id.action_account){
-            startActivity(new Intent(getApplicationContext(),AccountActivity.class));
-        }else if(item.getItemId()==R.id.action_changepassword){
-            startActivity(new Intent(getApplicationContext(),ChangePasswordActivity.class));
+        } else if (item.getItemId() == R.id.action_account) {
+            startActivity(new Intent(getApplicationContext(), AccountActivity.class));
+        } else if (item.getItemId() == R.id.action_changepassword) {
+            startActivity(new Intent(getApplicationContext(), ChangePasswordActivity.class));
         }
         return super.onOptionsItemSelected(item);
     }
 
     @Override
     public void onItemClick(int position) {
-        //todo fungsi klik cardview masih belum berfungsi
-
         Intent intent = new Intent(getApplicationContext(), DetailFreelancerActivity.class);
-        intent.putExtra(EXTRA_MESSAGE,usersList.get(position).docid);
+        intent.putExtra(EXTRA_MESSAGE, usersList.get(position).docid);
         startActivity(intent);
-    }// todo nambah detail user
+    }
 }

@@ -4,18 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
     android:background="@color/colorPrimary"
     android:orientation="vertical"
     tools:context=".DetailFreelancerActivity">
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/detail_imgprofile"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_margin="16dp"
-            android:src="@drawable/img_default_user" />
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Detail Freelancer"
+    android:textAlignment="center"
+    android:textStyle="bold"
+    android:textSize="24dp"
+    android:textColor="@android:color/background_light"
+    android:layout_marginVertical="24dp"/>
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/detail_imgprofile"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="16dp"
+        android:src="@drawable/img_default_user" />
 
 
     <ScrollView
@@ -41,100 +48,107 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="14dp"
                     android:layout_marginRight="14dp"
+                    android:enabled="false"
                     android:hint="@string/nama_lengkap"
                     android:inputType="textPersonName"
                     android:textSize="20sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
 
-                <com.google.android.material.textfield.TextInputLayout
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/detail_etkota"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="14dp"
+                    android:layout_marginRight="14dp"
+                    android:enabled="false"
+                    android:hint="@string/kota"
+                    android:inputType="textCapWords"
+                    android:textSize="20sp" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-                    <EditText
-                        android:id="@+id/detail_etkota"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="14dp"
-                        android:layout_marginRight="14dp"
-                        android:hint="@string/kota"
-                        android:inputType="textCapWords"
-                        android:textSize="20sp" />
-                </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-                <com.google.android.material.textfield.TextInputLayout
+                <EditText
+                    android:id="@+id/detail_etalamat"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <EditText
-                        android:id="@+id/detail_etalamat"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="14dp"
-                        android:layout_marginRight="14dp"
-                        android:hint="@string/alamat"
-                        android:inputType="textMultiLine"
-                        android:textSize="20sp" />
-                </com.google.android.material.textfield.TextInputLayout>
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="14dp"
+                    android:layout_marginRight="14dp"
+                    android:enabled="false"
+                    android:hint="@string/alamat"
+                    android:inputType="textMultiLine"
+                    android:textSize="20sp" />
+            </com.google.android.material.textfield.TextInputLayout>
 
 
-                <com.google.android.material.textfield.TextInputLayout
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/detail_etprofesi"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="14dp"
+                    android:layout_marginRight="14dp"
+                    android:enabled="false"
+                    android:hint="@string/profesi"
+                    android:inputType="textCapWords"
+                    android:textSize="20sp" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-                    <EditText
-                        android:id="@+id/detail_etprofesi"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="14dp"
-                        android:layout_marginRight="14dp"
-                        android:hint="@string/profesi"
-                        android:inputType="textCapWords"
-                        android:textSize="20sp" />
-                </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-                <com.google.android.material.textfield.TextInputLayout
+                <EditText
+                    android:id="@+id/detail_etlamabekerja"
+                    android:enabled="false"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="14dp"
+                    android:layout_marginRight="14dp"
+                    android:hint="@string/lama_kerja"
+                    android:inputType="textMultiLine"
+                    android:textSize="20sp" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-                    <EditText
-                        android:id="@+id/detail_etlamabekerja"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="14dp"
-                        android:layout_marginRight="14dp"
-                        android:hint="@string/lama_kerja"
-                        android:inputType="textMultiLine"
-                        android:textSize="20sp" />
-                </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-                <com.google.android.material.textfield.TextInputLayout
+                <EditText
+                    android:id="@+id/detail_etdeskripsi"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <EditText
-                        android:id="@+id/detail_etdeskripsi"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="14dp"
-                        android:layout_marginRight="14dp"
-                        android:hint="@string/deskripsi_pengalaman"
-                        android:inputType="textMultiLine"
-                        android:textSize="20sp" />
-                </com.google.android.material.textfield.TextInputLayout>
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:layout_marginLeft="14dp"
+                    android:layout_marginRight="14dp"
+                    android:hint="@string/deskripsi_pengalaman"
+                    android:inputType="textMultiLine"
+                    android:textSize="20sp" />
+            </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
     </ScrollView>
 
-        <Button
-            android:id="@+id/detail_contactbtn"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginHorizontal="4dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="4dp"
-            android:background="@drawable/secondary_button"
-            android:text="@string/ganti"
-            android:textColor="@color/colorPrimary" />
+    <Button
+        android:id="@+id/detail_contactbtn"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="bottom"
+        android:layout_marginHorizontal="4dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="4dp"
+        android:background="@drawable/secondary_button"
+        android:text="@string/hubungi"
+        android:textColor="@color/colorPrimary" />
 
 
 </LinearLayout>

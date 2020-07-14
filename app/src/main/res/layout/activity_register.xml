@@ -79,8 +79,8 @@
                 android:layout_height="40dp"
                 android:layout_weight="1"
                 android:clickable="true"
-                android:focusable="true"
-                android:contentDescription="@string/deskripsi" />
+                android:contentDescription="@string/deskripsi"
+                android:focusable="true" />
         </LinearLayout>
 
 

@@ -9,15 +9,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class ResetPasswordActivity extends AppCompatActivity {
     FirebaseAuth auth = FirebaseAuth.getInstance();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,12 +27,12 @@ public class ResetPasswordActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 final String email = etemail.getText().toString();
-                if(!email.isEmpty()){
+                if (!email.isEmpty()) {
                     auth.sendPasswordResetEmail(email)
                             .addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
-                                    Toast.makeText(getApplicationContext(), "Email Reset Passoword Berhasil Dikirim Ke "+email, Toast.LENGTH_LONG).show();
+                                    Toast.makeText(getApplicationContext(), "Email Reset Passoword Berhasil Dikirim Ke " + email, Toast.LENGTH_LONG).show();
                                     startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                                     finish();
                                 }
@@ -45,7 +43,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
                         }
                     });
 
-                }else{
+                } else {
                     etemail.setError("Email Masih Kosong");
                 }
             }

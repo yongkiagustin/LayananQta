@@ -92,7 +92,8 @@
                         android:inputType="number"
                         android:textSize="20sp" />
                 </com.google.android.material.textfield.TextInputLayout>
- <com.google.android.material.textfield.TextInputLayout
+
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
@@ -183,15 +184,6 @@
             </LinearLayout>
         </LinearLayout>
 
-        <ProgressBar
-            android:id="@+id/fb_progressbar"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="24dp"
-            android:visibility="gone" />
-
         <Button
             android:id="@+id/fb_nextbtn"
             android:layout_width="match_parent"
@@ -201,6 +193,14 @@
             android:background="@drawable/main_button"
             android:text="@string/next"
             android:textColor="@android:color/white" />
+        <ProgressBar
+            android:id="@+id/fb_progressbar"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
+            android:visibility="gone" />
 
     </LinearLayout>
 </ScrollView>

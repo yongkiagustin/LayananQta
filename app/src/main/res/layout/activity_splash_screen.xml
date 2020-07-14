@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:gravity="center"
+    android:orientation="vertical"
     tools:context=".SplashScreen">
 
     <ImageView
+        android:id="@+id/ss_logo"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/img_logo"
-        android:id="@+id/ss_logo"/>
+        android:src="@drawable/img_logo" />
 </LinearLayout>

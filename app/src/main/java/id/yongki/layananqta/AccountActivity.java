@@ -50,18 +50,17 @@ import id.yongki.layananqta.model.UsersModel;
 
 public class AccountActivity extends AppCompatActivity {
     Button changeProfile, cancel, saveChange;
-    EditText etnama, etnohp,etkota, etalamat, etemail, etprofesi, etlamaKerja, etdeskripsi;
-    TextView labelstatus, labelpending, labelChangePhoto;
+    EditText etnama, etnohp, etkota, etalamat, etemail, etprofesi, etlamaKerja, etdeskripsi;
+    TextView labelstatus, labelpending, labelchangephoto,labeldeletephoto;
     String status = "";
-    String imageUrl;
+    String imageUrl = "";
     RadioGroup radioGroup;
     ImageView photo;
     CheckBox checkBox;
     ProgressBar uploadProgress;
-    LinearLayout llcheckbox, secForm;
+    LinearLayout llcheckbox, secForm, setphoto;
     RadioButton radioButton, radioActive, radioNonactive;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-    FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
     FirebaseStorage storage = FirebaseStorage.getInstance();
     final int GALLERY_REQUEST_CODE = 111;
@@ -86,11 +85,13 @@ public class AccountActivity extends AppCompatActivity {
         secForm = findViewById(R.id.account_secform);
         labelstatus = findViewById(R.id.account_label_status);
         labelpending = findViewById(R.id.account_label_status_pending);
-        labelChangePhoto = findViewById(R.id.account_label_change_photo);
+        labelchangephoto = findViewById(R.id.account_label_change_photo);
         photo = findViewById(R.id.account_imgprofile);
         uploadProgress = findViewById(R.id.account_progressbar);
         radioActive = findViewById(R.id.account_active);
         radioNonactive = findViewById(R.id.account_nonactive);
+        labeldeletephoto = findViewById(R.id.account_label_delete_photo);
+        setphoto = findViewById(R.id.label_setphoto);
 
         changeProfile = findViewById(R.id.account_changeprofile);
         cancel = findViewById(R.id.account_cancel);
@@ -106,7 +107,7 @@ public class AccountActivity extends AppCompatActivity {
         checkBox.setVisibility(View.GONE);
         labelpending.setVisibility(View.GONE);
 
-        labelChangePhoto.setClickable(false);
+        labelchangephoto.setClickable(false);
         radioActive.setClickable(false);
         radioNonactive.setClickable(false);
         checkBox.setClickable(false);
@@ -118,8 +119,9 @@ public class AccountActivity extends AppCompatActivity {
         etprofesi.setEnabled(false);
         etlamaKerja.setEnabled(false);
         etdeskripsi.setEnabled(false);
+        labeldeletephoto.setEnabled(false);
+        setphoto.setVisibility(View.GONE);
         String uid = mUser.getUid();
-
 
 
         final DocumentReference docRef = db.collection("users").document(uid);
@@ -129,7 +131,7 @@ public class AccountActivity extends AppCompatActivity {
                 if (task.isSuccessful()) {
                     DocumentSnapshot document = task.getResult();
                     if (document.exists()) {
-                        UsersModel usersModel = new UsersModel(
+                        final UsersModel usersModel = new UsersModel(
                                 (String) document.get("nama"),
                                 (String) document.get("nohp"),
                                 (String) document.get("kota"),
@@ -152,21 +154,20 @@ public class AccountActivity extends AppCompatActivity {
                         etdeskripsi.setText(usersModel.deskripsi);
                         status = usersModel.status; //active, nonactive, pending
                         labelstatus.setText(status);
-                        Glide.with(AccountActivity.this).load(usersModel.profilePic).into(photo);
-                        if(usersModel.profilePic==null){
+                        if ((usersModel.profilePic == null) || (usersModel.profilePic.equals(""))) {
                             photo.setImageResource(R.drawable.img_default_user);
                         }else{
-                            imageUrl = usersModel.profilePic;
+                            Glide.with(AccountActivity.this).load(usersModel.profilePic).into(photo);
                         }
 
-                        //TODO membuat fungsi radiobutton done
-                        //todo forgot password done
-                        //todo ganti password done
-
-                        //todo disable ganti foto done
-                        //todo clickable cardview
-                        // todo orderby kota
-                        //todo ganti email (opsional)
+                        //fungsi hapus foto
+                        labeldeletephoto.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                usersModel.profilePic = null;
+                                photo.setImageResource(R.drawable.img_default_user);
+                            }
+                        });
 
                         //kondisi status
                         if (status.equalsIgnoreCase("active")) {
@@ -191,10 +192,10 @@ public class AccountActivity extends AppCompatActivity {
                         }
 
                     } else {
-                        // Log.d(TAG, "No such document");
+                        startActivity(new Intent(getApplicationContext(), FormBiodataActivity.class));
                     }
                 } else {
-                    // Log.d(TAG, "get failed with ", task.getException());
+                    Toast.makeText(getApplicationContext(), "Terjadi Error, Mohon Coba Kembali", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -212,10 +213,13 @@ public class AccountActivity extends AppCompatActivity {
                 etlamaKerja.setEnabled(true);
                 etdeskripsi.setEnabled(true);
                 etemail.setEnabled(true);
-                labelChangePhoto.setClickable(true);
+                labelchangephoto.setClickable(true);
                 radioActive.setClickable(true);
                 radioNonactive.setClickable(true);
                 checkBox.setClickable(true);
+                labeldeletephoto.setEnabled(true);
+                setphoto.setVisibility(View.VISIBLE);
+
 
 
                 changeProfile.setVisibility(View.GONE);
@@ -236,10 +240,13 @@ public class AccountActivity extends AppCompatActivity {
                 etlamaKerja.setEnabled(false);
                 etdeskripsi.setEnabled(false);
                 etemail.setEnabled(false);
-                labelChangePhoto.setClickable(false);
+                labelchangephoto.setClickable(false);
                 radioActive.setClickable(false);
                 radioNonactive.setClickable(false);
                 checkBox.setClickable(false);
+                labeldeletephoto.setEnabled(false);
+                setphoto.setVisibility(View.GONE);
+
 
                 changeProfile.setVisibility(View.VISIBLE);
                 cancel.setVisibility(View.GONE);
@@ -259,10 +266,13 @@ public class AccountActivity extends AppCompatActivity {
                 etlamaKerja.setEnabled(false);
                 etdeskripsi.setEnabled(false);
                 etemail.setEnabled(false);
-                labelChangePhoto.setClickable(false);
+                labelchangephoto.setClickable(false);
                 radioActive.setClickable(false);
                 radioNonactive.setClickable(false);
                 checkBox.setClickable(false);
+                labeldeletephoto.setEnabled(false);
+                setphoto.setVisibility(View.GONE);
+
 
                 changeProfile.setVisibility(View.VISIBLE);
                 cancel.setVisibility(View.GONE);
@@ -302,7 +312,7 @@ public class AccountActivity extends AppCompatActivity {
                         .addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-                                Log.w("", "Error adding document", e);
+                                Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
                             }
                         });
             }
@@ -317,6 +327,7 @@ public class AccountActivity extends AppCompatActivity {
             secForm.setVisibility(View.VISIBLE);
             status = "pending";
         } else {
+            secForm.setVisibility(View.GONE);
             status = "Nonactive";
         }
 
@@ -331,7 +342,7 @@ public class AccountActivity extends AppCompatActivity {
 
 
     void setOnClickButton() {
-        labelChangePhoto.setOnClickListener(new View.OnClickListener() {
+        labelchangephoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_PICK);

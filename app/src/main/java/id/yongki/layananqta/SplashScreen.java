@@ -34,7 +34,7 @@ public class SplashScreen extends AppCompatActivity {
                 if (firebaseUser == null) {
                     startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                     finish();
-                }else{
+                } else {
                     db.collection("users").document(firebaseAuth.getCurrentUser().getUid()).get()
                             .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                                 @Override
@@ -55,7 +55,7 @@ public class SplashScreen extends AppCompatActivity {
                             });
                 }
             }
-        },2000);
+        }, 2000);
 
     }
 
