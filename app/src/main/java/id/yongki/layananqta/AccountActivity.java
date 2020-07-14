@@ -58,7 +58,7 @@ public class AccountActivity extends AppCompatActivity {
     ImageView photo;
     CheckBox checkBox;
     ProgressBar uploadProgress;
-    LinearLayout llcheckbox;
+    LinearLayout llcheckbox, secForm;
     RadioButton radioButton, radioActive, radioNonactive;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
@@ -83,6 +83,7 @@ public class AccountActivity extends AppCompatActivity {
         radioGroup = findViewById(R.id.account_radioGroup);
         checkBox = findViewById(R.id.account_checkbox);
         llcheckbox = findViewById(R.id.account_layout_checkbox);
+        secForm = findViewById(R.id.account_secform);
         labelstatus = findViewById(R.id.account_label_status);
         labelpending = findViewById(R.id.account_label_status_pending);
         labelChangePhoto = findViewById(R.id.account_label_change_photo);
@@ -100,12 +101,15 @@ public class AccountActivity extends AppCompatActivity {
         changeProfile.setVisibility(View.VISIBLE);
         cancel.setVisibility(View.GONE);
         saveChange.setVisibility(View.GONE);
+        secForm.setVisibility(View.GONE);
+        radioGroup.setVisibility(View.GONE);
+        checkBox.setVisibility(View.GONE);
+        labelpending.setVisibility(View.GONE);
+
         labelChangePhoto.setClickable(false);
         radioActive.setClickable(false);
         radioNonactive.setClickable(false);
         checkBox.setClickable(false);
-
-
         etnama.setEnabled(false);
         etnohp.setEnabled(false);
         etkota.setEnabled(false);
@@ -116,9 +120,7 @@ public class AccountActivity extends AppCompatActivity {
         etdeskripsi.setEnabled(false);
         String uid = mUser.getUid();
 
-        radioGroup.setVisibility(View.GONE);
-        checkBox.setVisibility(View.GONE);
-        labelpending.setVisibility(View.GONE);
+
 
         final DocumentReference docRef = db.collection("users").document(uid);
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -168,16 +170,19 @@ public class AccountActivity extends AppCompatActivity {
 
                         //kondisi status
                         if (status.equalsIgnoreCase("active")) {
+                            secForm.setVisibility(View.VISIBLE);
                             radioGroup.setVisibility(View.VISIBLE);
                             radioButton = findViewById(R.id.account_active);
                             radioButton.setChecked(true);
                             checkBox.setVisibility(View.GONE);
                             labelpending.setVisibility(View.GONE);
                         } else if (status.equalsIgnoreCase("pending")) {
+                            secForm.setVisibility(View.VISIBLE);
                             radioGroup.setVisibility(View.GONE);
                             checkBox.setVisibility(View.GONE);
                             labelpending.setVisibility(View.VISIBLE);
                         } else {
+                            secForm.setVisibility(View.GONE);
                             radioGroup.setVisibility(View.GONE);
                             checkBox.setVisibility(View.VISIBLE);
                             labelpending.setVisibility(View.GONE);
@@ -309,6 +314,7 @@ public class AccountActivity extends AppCompatActivity {
     //fungsi checkbox
     public void checkbox(View v) {
         if (checkBox.isChecked()) {
+            secForm.setVisibility(View.VISIBLE);
             status = "pending";
         } else {
             status = "Nonactive";

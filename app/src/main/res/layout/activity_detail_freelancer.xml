@@ -7,25 +7,16 @@
     android:gravity="center"
     android:background="@color/colorPrimary"
     android:orientation="vertical"
-    tools:context=".AccountActivity">
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        android:gravity="center_vertical"
-        android:orientation="vertical">
+    tools:context=".DetailFreelancerActivity">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/account_imgprofile"
+            android:id="@+id/detail_imgprofile"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_gravity="center_horizontal"
-            android:layout_margin="8dp"
+            android:layout_margin="16dp"
             android:src="@drawable/img_default_user" />
 
-    </LinearLayout>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -45,7 +36,7 @@
                 android:layout_marginTop="8dp">
 
                 <EditText
-                    android:id="@+id/account_etnama"
+                    android:id="@+id/detail_etnama"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="14dp"
@@ -55,12 +46,13 @@
                     android:textSize="20sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <EditText
-                        android:id="@+id/account_etkota"
+                        android:id="@+id/detail_etkota"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="14dp"
@@ -75,7 +67,7 @@
                     android:layout_height="wrap_content">
 
                     <EditText
-                        android:id="@+id/account_etalamat"
+                        android:id="@+id/detail_etalamat"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="14dp"
@@ -91,7 +83,7 @@
                     android:layout_height="wrap_content">
 
                     <EditText
-                        android:id="@+id/account_etprofesi"
+                        android:id="@+id/detail_etprofesi"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="14dp"
@@ -106,7 +98,7 @@
                     android:layout_height="wrap_content">
 
                     <EditText
-                        android:id="@+id/account_etlamabekerja"
+                        android:id="@+id/detail_etlamabekerja"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="14dp"
@@ -121,7 +113,7 @@
                     android:layout_height="wrap_content">
 
                     <EditText
-                        android:id="@+id/account_etdeskripsi"
+                        android:id="@+id/detail_etdeskripsi"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="14dp"
@@ -130,29 +122,11 @@
                         android:inputType="textMultiLine"
                         android:textSize="20sp" />
                 </com.google.android.material.textfield.TextInputLayout>
-
-
-
-            <ProgressBar
-                android:id="@+id/account_progressbar"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="24dp"
-                android:layout_marginBottom="24dp"
-                android:visibility="gone" />
         </LinearLayout>
     </ScrollView>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:layout_marginHorizontal="4dp"
-        android:layout_marginVertical="8dp"
-        android:orientation="horizontal">
 
         <Button
-            android:id="@+id/account_changeprofile"
+            android:id="@+id/detail_contactbtn"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginHorizontal="4dp"
@@ -161,33 +135,6 @@
             android:background="@drawable/secondary_button"
             android:text="@string/ganti"
             android:textColor="@color/colorPrimary" />
-
-        <Button
-            android:id="@+id/account_cancel"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginLeft="4dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="4dp"
-            android:layout_marginBottom="4dp"
-            android:layout_weight="1"
-            android:background="@drawable/secondary_button"
-            android:text="@string/batal"
-            android:textColor="@color/colorPrimary" />
-
-        <Button
-            android:id="@+id/account_save"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginLeft="4dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="4dp"
-            android:layout_marginBottom="4dp"
-            android:layout_weight="1"
-            android:background="@drawable/secondary_button"
-            android:text="@string/simpan"
-            android:textColor="@color/colorPrimary" />
-    </LinearLayout>
 
 
 </LinearLayout>
