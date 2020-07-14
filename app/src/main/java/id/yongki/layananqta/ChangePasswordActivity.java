@@ -70,7 +70,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
                             .addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
-                                    Intent intent = new Intent(ChangePasswordActivity.this, ListActivity.class);
+                                    Intent intent = new Intent(getApplicationContext(), ListActivity.class);
                                     startActivity(intent);
                                 }
                             }).addOnFailureListener(new OnFailureListener() {

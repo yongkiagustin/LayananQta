@@ -166,6 +166,7 @@ public class AccountActivity extends AppCompatActivity {
 
                         //todo disable ganti foto done
                         //todo clickable cardview
+                        // todo orderby kota
                         //todo ganti email (opsional)
 
                         //kondisi status
