@@ -1,4 +1,4 @@
-package id.yongki.layananqta.Model;
+package id.yongki.layananqta.model;
 
 
 public class UsersModel {

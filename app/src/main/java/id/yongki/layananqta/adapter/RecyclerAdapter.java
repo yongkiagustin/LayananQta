@@ -1,4 +1,4 @@
-package id.yongki.layananqta.Adapter;
+package id.yongki.layananqta.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -6,11 +6,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-import id.yongki.layananqta.Model.UsersModel;
+import id.yongki.layananqta.model.UsersModel;
 import id.yongki.layananqta.R;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyViewHolder> {
@@ -18,21 +19,25 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
     private Context mContext;
     private OnItemListener mOnItemListener;
     private List<UsersModel> albumList;
+
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        TextView nama,kota,alamat, profesi, lamaKerja;
+        TextView nama, kota, alamat, profesi, lamaKerja;
+        CardView cardView;
         OnItemListener onItemListener;
+
         public MyViewHolder(View v, OnItemListener onItemListener) {
             super(v);
 
-            nama = (TextView)v.findViewById(R.id.rv_labelnama);
-            kota = (TextView)v.findViewById(R.id.rv_labelkota);
-            alamat = (TextView)v.findViewById(R.id.rv_labelalamat);
-            profesi = (TextView)v.findViewById(R.id.rv_labelprofesi);
-            lamaKerja = (TextView)v.findViewById(R.id.rv_labellamakerja);
+            nama = (TextView) v.findViewById(R.id.rv_labelnama);
+            kota = (TextView) v.findViewById(R.id.rv_labelkota);
+            alamat = (TextView) v.findViewById(R.id.rv_labelalamat);
+            profesi = (TextView) v.findViewById(R.id.rv_labelprofesi);
+            lamaKerja = (TextView) v.findViewById(R.id.rv_labellamakerja);
+            cardView = (CardView) v.findViewById(R.id.rc_cardview);
             this.onItemListener = onItemListener;
 
-            v.setOnClickListener(this);
+            cardView.setOnClickListener(this);
         }
 
         @Override
@@ -40,11 +45,13 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
             onItemListener.onItemClick(getAdapterPosition());
         }
     }
+
     public RecyclerAdapter(Context mContext, List<UsersModel> albumList, OnItemListener onItemListener) {
         this.mContext = mContext;
         this.albumList = albumList;
         this.mOnItemListener = onItemListener;
     }
+
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
@@ -52,6 +59,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
 
         return new MyViewHolder(itemView, mOnItemListener);
     }
+
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
         final UsersModel album = albumList.get(position);
@@ -62,11 +70,13 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
         holder.lamaKerja.setText(album.lamaKerja);
 
     }
+
     @Override
     public int getItemCount() {
         return albumList.size();
     }
-    public interface OnItemListener{
+
+    public interface OnItemListener {
         void onItemClick(int position);
     }
 }
