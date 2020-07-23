@@ -212,7 +212,6 @@ public class AccountActivity extends AppCompatActivity {
                 etprofesi.setEnabled(true);
                 etlamaKerja.setEnabled(true);
                 etdeskripsi.setEnabled(true);
-                etemail.setEnabled(true);
                 labelchangephoto.setClickable(true);
                 radioActive.setClickable(true);
                 radioNonactive.setClickable(true);
@@ -239,7 +238,6 @@ public class AccountActivity extends AppCompatActivity {
                 etprofesi.setEnabled(false);
                 etlamaKerja.setEnabled(false);
                 etdeskripsi.setEnabled(false);
-                etemail.setEnabled(false);
                 labelchangephoto.setClickable(false);
                 radioActive.setClickable(false);
                 radioNonactive.setClickable(false);
@@ -265,7 +263,6 @@ public class AccountActivity extends AppCompatActivity {
                 etprofesi.setEnabled(false);
                 etlamaKerja.setEnabled(false);
                 etdeskripsi.setEnabled(false);
-                etemail.setEnabled(false);
                 labelchangephoto.setClickable(false);
                 radioActive.setClickable(false);
                 radioNonactive.setClickable(false);
@@ -291,7 +288,6 @@ public class AccountActivity extends AppCompatActivity {
                 //membuat data user ke firestore
                 Map<String, Object> user = new HashMap<>();
                 user.put("nama", nama);
-                user.put("email", email);
                 user.put("nohp", nohp);
                 user.put("kota", kota);
                 user.put("alamat", alamat);

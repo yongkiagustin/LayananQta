@@ -24,7 +24,7 @@
             android:theme="@style/NoActionBarStyle" />
         <activity
             android:name=".AccountActivity"
-            android:theme="@style/NoActionBarStyle" />
+            android:label="Profil" />
         <activity android:name=".FormBiodataActivity" />
         <activity
             android:name=".SplashScreen"
@@ -38,7 +38,7 @@
         <activity android:name=".LoginActivity" />
         <activity
             android:name=".ListActivity"
-            android:label="LIST TEKNISI" />
+            android:label="LIST FREELANCER" />
         <activity android:name=".RegisterActivity" />
     </application>
 

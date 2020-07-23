@@ -72,7 +72,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="2dp"
                 android:layout_weight="1"
-                android:text="STATUS :"
+                android:text="@string/status"
                 android:textAlignment="textEnd"
                 android:textColor="@android:color/background_light"
                 android:textStyle="bold" />
@@ -281,7 +281,7 @@
                     android:layout_marginHorizontal="8dp"
                     android:clickable="false"
                     android:onClick="checkbox"
-                    android:text="@string/daftar_menjadi_teknisi" />
+                    android:text="@string/daftar_menjadi_freelancer" />
             </LinearLayout>
 
             <ProgressBar
