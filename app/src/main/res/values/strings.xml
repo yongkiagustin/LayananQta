@@ -20,7 +20,7 @@
     <string name="profesi">Profesi</string>
     <string name="deskripsi_pengalaman">Deskripsi Pengalaman</string>
     <string name="lama_kerja">Lama Bekerja</string>
-    <string name="daftar_menjadi_teknisi">Daftar Menjadi Teknisi</string>
+    <string name="daftar_menjadi_freelancer">Daftar Menjadi Freelancer</string>
     <string name="ganti_foto">Ganti Foto</string>
     <string name="sebelum_ketahap_selanjutnya">Sebelum ke tahap selanjutnya, yuk isi data diri kamu terlebih dahulu!</string>
     <string name="isi_data_diri">Isi Data Diri</string>
@@ -37,6 +37,7 @@
     <string name="password_saat_ini">Password Saat Ini</string>
     <string name="hubungi">Hubungi</string>
     <string name="hapus_foto">Hapus Foto</string>
+    <string name="tahun"> Tahun</string>
 
     //warning
     <string name="nama_kosong">Nama lengkap tidak boleh kosong</string>

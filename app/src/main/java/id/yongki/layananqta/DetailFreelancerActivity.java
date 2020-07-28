@@ -75,7 +75,7 @@ public class DetailFreelancerActivity extends AppCompatActivity {
 
                     if ((usersModel.profilePic == null) || (usersModel.profilePic.equals(""))) {
                         photo.setImageResource(R.drawable.img_default_user);
-                    }else{
+                    } else {
                         Glide.with(DetailFreelancerActivity.this).load(usersModel.profilePic).into(photo);
                     }
                 }
@@ -87,7 +87,6 @@ public class DetailFreelancerActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                //todo tinggal menambah text ke whatsapp
                 Uri uri = Uri.parse("smsto:" + noHp);
                 Intent intent = new Intent(Intent.ACTION_SENDTO, uri);
                 intent.setPackage("com.whatsapp");

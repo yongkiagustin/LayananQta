@@ -11,6 +11,9 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -29,6 +32,7 @@ import id.yongki.layananqta.model.UsersModel;
 public class ListActivity extends AppCompatActivity implements RecyclerAdapter.OnItemListener {
     public static final String EXTRA_MESSAGE = "id.yongki.layananqta.MESSAGE";
     FirebaseAuth firebaseAuth;
+    TextView label;
     ArrayList<UsersModel> usersList = new ArrayList<>();
     RecyclerAdapter recyclerAdapter;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -38,6 +42,8 @@ public class ListActivity extends AppCompatActivity implements RecyclerAdapter.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
 
+        label = findViewById(R.id.list_label);
+        label.setVisibility(View.GONE);
         firebaseAuth = FirebaseAuth.getInstance();
         recyclerAdapter = new RecyclerAdapter(getApplicationContext(), usersList, this);
         RecyclerView recyclerView = findViewById(R.id.myRecyclerview);
@@ -56,27 +62,33 @@ public class ListActivity extends AppCompatActivity implements RecyclerAdapter.O
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : Objects.requireNonNull(task.getResult())) {
-                                usersList.add(new UsersModel(
-                                        (String) document.get("nama"),
-                                        (String) document.get("nohp"),
-                                        (String) document.get("kota"),
-                                        (String) document.get("alamat"),
-                                        (String) document.get("email"),
-                                        (String) document.get("profesi"),
-                                        (String) document.get("lamakerja"),
-                                        (String) document.get("deskripsi"),
-                                        (String) document.get("status"),
-                                        (String) document.get("profilePic"),
-                                        (String) document.getId()
+                            if (task.getResult().size() < 1) {
+                                label.setVisibility(View.VISIBLE);
 
-                                ));
+                            } else {
+                                for (QueryDocumentSnapshot document : Objects.requireNonNull(task.getResult())) {
+                                    usersList.add(new UsersModel(
+                                            (String) document.get("nama"),
+                                            (String) document.get("nohp"),
+                                            (String) document.get("kota"),
+                                            (String) document.get("alamat"),
+                                            (String) document.get("email"),
+                                            (String) document.get("profesi"),
+                                            (String) document.get("lamakerja"),
+                                            (String) document.get("deskripsi"),
+                                            (String) document.get("status"),
+                                            (String) document.get("profilePic"),
+                                            (String) document.getId()
 
-                                recyclerAdapter.notifyDataSetChanged();
+                                    ));
 
+                                    recyclerAdapter.notifyDataSetChanged();
+
+                                }
                             }
+
                         } else {
-                            Log.w("TAG", "Error getting documents.", task.getException());
+                            Toast.makeText(getApplicationContext(), "Try again Later", Toast.LENGTH_LONG).show();
 
                         }
 

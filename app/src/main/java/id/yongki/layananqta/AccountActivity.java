@@ -51,7 +51,7 @@ import id.yongki.layananqta.model.UsersModel;
 public class AccountActivity extends AppCompatActivity {
     Button changeProfile, cancel, saveChange;
     EditText etnama, etnohp, etkota, etalamat, etemail, etprofesi, etlamaKerja, etdeskripsi;
-    TextView labelstatus, labelpending, labelchangephoto,labeldeletephoto;
+    TextView labelstatus, labelpending, labelchangephoto, labeldeletephoto;
     String status = "";
     String imageUrl = "";
     RadioGroup radioGroup;
@@ -156,7 +156,7 @@ public class AccountActivity extends AppCompatActivity {
                         labelstatus.setText(status);
                         if ((usersModel.profilePic == null) || (usersModel.profilePic.equals(""))) {
                             photo.setImageResource(R.drawable.img_default_user);
-                        }else{
+                        } else {
                             Glide.with(AccountActivity.this).load(usersModel.profilePic).into(photo);
                         }
 
@@ -219,7 +219,6 @@ public class AccountActivity extends AppCompatActivity {
                 checkBox.setClickable(true);
                 labeldeletephoto.setEnabled(true);
                 setphoto.setVisibility(View.VISIBLE);
-
 
 
                 changeProfile.setVisibility(View.GONE);
