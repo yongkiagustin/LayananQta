@@ -45,7 +45,7 @@ import java.util.Objects;
 
 public class FormBiodataActivity extends AppCompatActivity {
 
-    EditText etnama, etnohp,etkota, etalamat, etprofesi, etlamakerja, etdeskripsi;
+    EditText etnama, etnohp, etkota, etalamat, etprofesi, etlamakerja, etdeskripsi;
     CheckBox checkBox;
     LinearLayout technician;
     TextView labelChangePhoto;
@@ -126,10 +126,10 @@ public class FormBiodataActivity extends AppCompatActivity {
                     user.put("nohp", nohp);
                     user.put("kota", kota);
                     user.put("alamat", alamat);
-                    user.put("profesi",profesi);
-                    user.put("lamakerja",lamakerja);
-                    user.put("deskripsi",deskripsi);
-                    user.put("status",status);
+                    user.put("profesi", profesi);
+                    user.put("lamakerja", lamakerja);
+                    user.put("deskripsi", deskripsi);
+                    user.put("status", status);
                     user.put("profilePic", imageUrl);
                     db.collection("users").document(mUser.getUid()).set(user)
                             .addOnSuccessListener(new OnSuccessListener<Void>() {

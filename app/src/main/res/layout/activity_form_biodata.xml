@@ -138,20 +138,38 @@
                         android:textSize="20sp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
+                <RelativeLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
 
-                    <EditText
-                        android:id="@+id/fb_etlamabekerja"
+                    <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/fb_etlamabekerja"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="14dp"
+                            android:layout_marginRight="14dp"
+                            android:hint="@string/lama_kerja"
+                            android:importantForAutofill="no"
+                            android:inputType="number"
+                            android:textSize="20sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="14dp"
-                        android:layout_marginRight="14dp"
-                        android:hint="@string/lama_kerja"
-                        android:inputType="textMultiLine"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:paddingStart="0dp"
+                        android:paddingEnd="24dp"
+                        android:text="@string/tahun"
+                        android:textColor="@android:color/darker_gray"
                         android:textSize="20sp" />
-                </com.google.android.material.textfield.TextInputLayout>
+
+                </RelativeLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
@@ -193,6 +211,7 @@
             android:background="@drawable/main_button"
             android:text="@string/next"
             android:textColor="@android:color/white" />
+
         <ProgressBar
             android:id="@+id/fb_progressbar"
             android:layout_width="50dp"

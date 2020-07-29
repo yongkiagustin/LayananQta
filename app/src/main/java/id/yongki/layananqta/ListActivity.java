@@ -11,10 +11,15 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AbsListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -29,58 +34,129 @@ import id.yongki.layananqta.model.UsersModel;
 public class ListActivity extends AppCompatActivity implements RecyclerAdapter.OnItemListener {
     public static final String EXTRA_MESSAGE = "id.yongki.layananqta.MESSAGE";
     FirebaseAuth firebaseAuth;
+    TextView label;
     ArrayList<UsersModel> usersList = new ArrayList<>();
     RecyclerAdapter recyclerAdapter;
+    LinearLayoutManager linearLayoutManager;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
+    DocumentSnapshot lastVisible;
+    RecyclerView recyclerView;
+    boolean isScrolling;
+    boolean isLastItemReached;
+    private static final int PAGE_SIZE = 10;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
-
+        linearLayoutManager = new LinearLayoutManager(this);
+        label = findViewById(R.id.list_label);
+        label.setVisibility(View.GONE);
         firebaseAuth = FirebaseAuth.getInstance();
         recyclerAdapter = new RecyclerAdapter(getApplicationContext(), usersList, this);
-        RecyclerView recyclerView = findViewById(R.id.myRecyclerview);
+        recyclerView = findViewById(R.id.myRecyclerview);
         recyclerView.setAdapter(recyclerAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setLayoutManager(linearLayoutManager);
 
         readData();
+
 
     }
 
     private void readData() {
         db.collection("users")
-                .whereEqualTo("status", "Active").orderBy("kota", Query.Direction.ASCENDING)
+                .whereEqualTo("status", "Active").orderBy("kota", Query.Direction.ASCENDING).limit(PAGE_SIZE)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : Objects.requireNonNull(task.getResult())) {
-                                usersList.add(new UsersModel(
-                                        (String) document.get("nama"),
-                                        (String) document.get("nohp"),
-                                        (String) document.get("kota"),
-                                        (String) document.get("alamat"),
-                                        (String) document.get("email"),
-                                        (String) document.get("profesi"),
-                                        (String) document.get("lamakerja"),
-                                        (String) document.get("deskripsi"),
-                                        (String) document.get("status"),
-                                        (String) document.get("profilePic"),
-                                        (String) document.getId()
+                            if (task.getResult().size() < 1) {
+                                label.setVisibility(View.VISIBLE);
 
-                                ));
+                            } else {
+                                for (QueryDocumentSnapshot document : Objects.requireNonNull(task.getResult())) {
 
-                                recyclerAdapter.notifyDataSetChanged();
+                                    usersList.add(new UsersModel(
+                                            (String) document.get("nama"),
+                                            (String) document.get("nohp"),
+                                            (String) document.get("kota"),
+                                            (String) document.get("alamat"),
+                                            (String) document.get("email"),
+                                            (String) document.get("profesi"),
+                                            (String) document.get("lamakerja"),
+                                            (String) document.get("deskripsi"),
+                                            (String) document.get("status"),
+                                            (String) document.get("profilePic"),
+                                            (String) document.getId()
 
+                                    ));
+
+                                }
+                                recyclerView.setAdapter(recyclerAdapter);
+                                Toast.makeText(getApplicationContext(), "page 1", Toast.LENGTH_LONG).show();
+                                lastVisible = task.getResult().getDocuments().get(task.getResult().size() - 1);
+                                RecyclerView.OnScrollListener onScrollListener = new RecyclerView.OnScrollListener() {
+                                    @Override
+                                    public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+                                        super.onScrollStateChanged(recyclerView, newState);
+                                        if (newState == AbsListView.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL) {
+                                            isScrolling = true;
+
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                                        super.onScrolled(recyclerView, dx, dy);
+                                        int firstVisibleItem = linearLayoutManager.findFirstCompletelyVisibleItemPosition();
+                                        int visibleItemCount = linearLayoutManager.getChildCount();
+                                        int totalItemCount = linearLayoutManager.getItemCount();
+                                        if (isScrolling && (firstVisibleItem + visibleItemCount == totalItemCount) && !isLastItemReached) {
+                                            isScrolling = false;
+                                            db.collection("users")
+                                                    .whereEqualTo("status", "Active").orderBy("kota", Query.Direction.ASCENDING).startAfter(lastVisible).limit(10)
+                                                    .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                                    for (QueryDocumentSnapshot document : Objects.requireNonNull(task.getResult())) {
+
+                                                        usersList.add(new UsersModel(
+                                                                (String) document.get("nama"),
+                                                                (String) document.get("nohp"),
+                                                                (String) document.get("kota"),
+                                                                (String) document.get("alamat"),
+                                                                (String) document.get("email"),
+                                                                (String) document.get("profesi"),
+                                                                (String) document.get("lamakerja"),
+                                                                (String) document.get("deskripsi"),
+                                                                (String) document.get("status"),
+                                                                (String) document.get("profilePic"),
+                                                                (String) document.getId()
+
+                                                        ));
+                                                    }
+                                                    recyclerAdapter.notifyDataSetChanged();
+
+                                                    if (task.getResult().size() < PAGE_SIZE) {
+                                                        isLastItemReached = true;
+                                                    }
+                                                    if (!isLastItemReached) {
+                                                        lastVisible = task.getResult().getDocuments().get(task.getResult().size() - 1);
+                                                        Toast.makeText(getApplicationContext(), "page 2", Toast.LENGTH_LONG).show();
+                                                    }
+                                                }
+                                            });
+                                        }
+                                    }
+                                };
+
+                                recyclerView.addOnScrollListener(onScrollListener);
                             }
-                        } else {
-                            Log.w("TAG", "Error getting documents.", task.getException());
-
                         }
 
                     }
+
                 });
     }
 

@@ -38,6 +38,7 @@
     <string name="hubungi">Hubungi</string>
     <string name="hapus_foto">Hapus Foto</string>
     <string name="status">STATUS :</string>
+    <string name="tahun"> Tahun</string>
 
     //warning
     <string name="nama_kosong">Nama lengkap tidak boleh kosong</string>

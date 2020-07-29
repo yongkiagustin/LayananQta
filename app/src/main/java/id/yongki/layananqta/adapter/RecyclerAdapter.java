@@ -5,9 +5,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.List;
+
 import id.yongki.layananqta.model.UsersModel;
 import id.yongki.layananqta.R;
 
@@ -64,7 +67,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
         holder.kota.setText(album.kota);
         holder.alamat.setText(album.alamat);
         holder.profesi.setText(album.profesi);
-        holder.lamaKerja.setText(album.lamaKerja);
+        holder.lamaKerja.setText(album.lamaKerja.concat(" Tahun"));
 
     }
 
