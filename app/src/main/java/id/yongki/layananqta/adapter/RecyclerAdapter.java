@@ -22,7 +22,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
 
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        TextView nama, kota, alamat, profesi, lamaKerja;
+        TextView nama, kota, alamat, profesi, lamaKerja,no;
         CardView cardView;
         OnItemListener onItemListener;
 
@@ -35,6 +35,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
             profesi = (TextView) v.findViewById(R.id.rv_labelprofesi);
             lamaKerja = (TextView) v.findViewById(R.id.rv_labellamakerja);
             cardView = (CardView) v.findViewById(R.id.rc_cardview);
+            no = (TextView)v.findViewById(R.id.rc_label_no);
             this.onItemListener = onItemListener;
 
             cardView.setOnClickListener(this);
@@ -68,6 +69,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
         holder.alamat.setText(album.alamat);
         holder.profesi.setText(album.profesi);
         holder.lamaKerja.setText(album.lamaKerja.concat(" Tahun"));
+        holder.no.setText(String.valueOf(position+1));
 
     }
 

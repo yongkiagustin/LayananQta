@@ -13,6 +13,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AbsListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,6 +42,7 @@ public class ListActivity extends AppCompatActivity implements RecyclerAdapter.O
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     DocumentSnapshot lastVisible;
     RecyclerView recyclerView;
+    ProgressBar progressBar;
     boolean isScrolling;
     boolean isLastItemReached;
     private static final int PAGE_SIZE = 10;
@@ -57,6 +59,8 @@ public class ListActivity extends AppCompatActivity implements RecyclerAdapter.O
         recyclerView = findViewById(R.id.myRecyclerview);
         recyclerView.setAdapter(recyclerAdapter);
         recyclerView.setLayoutManager(linearLayoutManager);
+        progressBar = findViewById(R.id.list_progressbar);
+        progressBar.setVisibility(View.VISIBLE);
 
         readData();
 
@@ -73,6 +77,7 @@ public class ListActivity extends AppCompatActivity implements RecyclerAdapter.O
                         if (task.isSuccessful()) {
                             if (task.getResult().size() < 1) {
                                 label.setVisibility(View.VISIBLE);
+                                progressBar.setVisibility(View.GONE);
 
                             } else {
                                 for (QueryDocumentSnapshot document : Objects.requireNonNull(task.getResult())) {
@@ -93,8 +98,8 @@ public class ListActivity extends AppCompatActivity implements RecyclerAdapter.O
                                     ));
 
                                 }
+                                progressBar.setVisibility(View.GONE);
                                 recyclerView.setAdapter(recyclerAdapter);
-                                Toast.makeText(getApplicationContext(), "page 1", Toast.LENGTH_LONG).show();
                                 lastVisible = task.getResult().getDocuments().get(task.getResult().size() - 1);
                                 RecyclerView.OnScrollListener onScrollListener = new RecyclerView.OnScrollListener() {
                                     @Override
@@ -102,6 +107,8 @@ public class ListActivity extends AppCompatActivity implements RecyclerAdapter.O
                                         super.onScrollStateChanged(recyclerView, newState);
                                         if (newState == AbsListView.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL) {
                                             isScrolling = true;
+                                            progressBar.setVisibility(View.VISIBLE);
+
 
                                         }
                                     }
@@ -136,6 +143,7 @@ public class ListActivity extends AppCompatActivity implements RecyclerAdapter.O
 
                                                         ));
                                                     }
+                                                    progressBar.setVisibility(View.GONE);
                                                     recyclerAdapter.notifyDataSetChanged();
 
                                                     if (task.getResult().size() < PAGE_SIZE) {

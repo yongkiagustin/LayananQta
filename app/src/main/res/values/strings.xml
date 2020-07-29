@@ -39,6 +39,7 @@
     <string name="hapus_foto">Hapus Foto</string>
     <string name="status">STATUS :</string>
     <string name="tahun"> Tahun</string>
+    <string name="belum_ada_daftar_freelancer">Belum Ada Daftar Freelancer, ayo daftar Sekarang!</string>
 
     //warning
     <string name="nama_kosong">Nama lengkap tidak boleh kosong</string>
