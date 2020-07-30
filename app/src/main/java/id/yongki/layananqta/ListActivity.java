@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -46,6 +47,7 @@ public class ListActivity extends AppCompatActivity implements RecyclerAdapter.O
     boolean isScrolling;
     boolean isLastItemReached;
     private static final int PAGE_SIZE = 10;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +63,15 @@ public class ListActivity extends AppCompatActivity implements RecyclerAdapter.O
         recyclerView.setLayoutManager(linearLayoutManager);
         progressBar = findViewById(R.id.list_progressbar);
         progressBar.setVisibility(View.VISIBLE);
+        swipeRefreshLayout = findViewById(R.id.list_swiperefreshlayout);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                usersList.clear();
+                readData();
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
 
         readData();
 

@@ -4,38 +4,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ListActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:color/darker_gray"
             android:orientation="horizontal">
+
             <EditText
                 android:layout_width="0dp"
-                android:hint="Cari berdasarkan Kota"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
                 android:layout_height="48dp"
                 android:layout_margin="8dp"
                 android:layout_weight="2"
-                android:background="@drawable/secondary_button"/>
+                android:background="@drawable/secondary_button"
+                android:hint="Cari berdasarkan Kota"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp" />
+
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/list_search"
-                android:background="@drawable/secondary_button"
-                android:layout_gravity="center_vertical"
-                android:layout_marginEnd="8dp"
-                android:clickable="true"
-                android:focusable="true"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:src="@drawable/ic_search"/>
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/secondary_button"
+                android:clickable="true"
+                android:focusable="true"
+                android:src="@drawable/ic_search" />
         </LinearLayout>
 
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    android:id="@+id/list_swiperefreshlayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/myRecyclerview"
             android:layout_width="match_parent"
@@ -47,13 +50,15 @@
             android:layout_height="wrap_content"
             android:text="@string/belum_ada_daftar_freelancer"
             android:textAlignment="center" />
+
         <ProgressBar
             android:id="@+id/list_progressbar"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginTop="24dp"
             android:layout_gravity="center_horizontal"
+            android:layout_marginTop="24dp"
             android:layout_marginBottom="24dp"
             android:visibility="invisible" />
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
     </LinearLayout>
-</LinearLayout>

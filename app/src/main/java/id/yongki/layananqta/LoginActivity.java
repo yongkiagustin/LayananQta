@@ -24,7 +24,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 
 public class LoginActivity extends AppCompatActivity {
-    private FirebaseAuth firebaseAuth;
+    private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     private ProgressBar progressBar;
     private EditText etemail, etPassword;
     boolean isPlay = false;
@@ -35,7 +35,6 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        firebaseAuth = FirebaseAuth.getInstance();
         progressBar = findViewById(R.id.login_progressbar);
         Button loginBtn = findViewById(R.id.login_loginbtn);
         etemail = findViewById(R.id.login_etemail);
