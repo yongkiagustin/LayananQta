@@ -27,6 +27,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:text="@string/bantu_orang"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimary"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:text="@string/daftar"
             android:textAllCaps="true"
             android:textColor="@color/colorPrimary"
@@ -45,6 +54,7 @@
                 android:layout_marginLeft="14dp"
                 android:layout_marginRight="14dp"
                 android:hint="@string/email"
+                android:importantForAutofill="no"
                 android:inputType="textEmailAddress"
                 android:textSize="20sp" />
         </com.google.android.material.textfield.TextInputLayout>

@@ -25,8 +25,8 @@ import static id.yongki.layananqta.ListActivity.EXTRA_MESSAGE;
 public class DetailFreelancerActivity extends AppCompatActivity {
     EditText etnama, etkota, etalamat, etprofesi, etlamakerja, etdeskripsi;
     ImageView photo;
-    String imageUrl, noHp;
-    Button button;
+    String email, noHp;
+    Button wabutton, telbutton, emailbutton;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     @Override
@@ -42,7 +42,9 @@ public class DetailFreelancerActivity extends AppCompatActivity {
         etprofesi = findViewById(R.id.detail_etprofesi);
         etlamakerja = findViewById(R.id.detail_etlamabekerja);
         etdeskripsi = findViewById(R.id.detail_etdeskripsi);
-        button = findViewById(R.id.detail_contactbtn);
+        wabutton = findViewById(R.id.detail_wabtn);
+        telbutton = findViewById(R.id.detail_telbtn);
+        emailbutton = findViewById(R.id.detail_emailtbtn);
         photo = findViewById(R.id.detail_imgprofile);
 
         assert id != null;
@@ -72,6 +74,7 @@ public class DetailFreelancerActivity extends AppCompatActivity {
                     etlamakerja.setText(usersModel.lamaKerja);
                     etdeskripsi.setText(usersModel.deskripsi);
                     noHp = usersModel.nohp;
+                    email = usersModel.email;
 
                     if ((usersModel.profilePic == null) || (usersModel.profilePic.equals(""))) {
                         photo.setImageResource(R.drawable.img_default_user);
@@ -83,7 +86,7 @@ public class DetailFreelancerActivity extends AppCompatActivity {
         });
 
 
-        button.setOnClickListener(new View.OnClickListener() {
+        wabutton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -93,6 +96,20 @@ public class DetailFreelancerActivity extends AppCompatActivity {
                 String text = "Halo, Saya mendapatkan informasi anda dari aplikasi LayananQta, saya ingin menggunakan jasa anda. Bisa minta waktunya sebentar?";
                 intent.putExtra(Intent.EXTRA_TEXT, text);
                 startActivity(Intent.createChooser(intent, ""));
+            }
+        });
+        telbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", noHp, null));
+                startActivity(intent);
+            }
+        });
+        emailbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:" + email));
+                startActivity(Intent.createChooser(emailIntent, "Send Email.."));
             }
         });
     }

@@ -96,7 +96,7 @@
             android:text="@string/menunggu_persetujuan_admin"
             android:textAlignment="center"
             android:textAllCaps="true"
-            android:textColor="@color/cardview_light_background"
+            android:textColor="@android:color/white"
             android:textStyle="bold" />
     </LinearLayout>
 
@@ -124,6 +124,7 @@
                     android:layout_marginLeft="14dp"
                     android:layout_marginRight="14dp"
                     android:hint="@string/nama_lengkap"
+                    android:importantForAutofill="no"
                     android:inputType="textPersonName"
                     android:textSize="20sp" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -139,6 +140,7 @@
                     android:layout_marginLeft="14dp"
                     android:layout_marginRight="14dp"
                     android:hint="@string/email"
+                    android:importantForAutofill="no"
                     android:inputType="textEmailAddress"
                     android:textSize="20sp" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -160,6 +162,7 @@
                         android:layout_marginLeft="14dp"
                         android:layout_marginRight="14dp"
                         android:hint="@string/nohp"
+                        android:importantForAutofill="no"
                         android:inputType="number"
                         android:textSize="20sp" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -175,6 +178,7 @@
                         android:layout_marginLeft="14dp"
                         android:layout_marginRight="14dp"
                         android:hint="@string/kota"
+                        android:importantForAutofill="no"
                         android:inputType="textCapWords"
                         android:textSize="20sp" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -190,6 +194,7 @@
                         android:layout_marginLeft="14dp"
                         android:layout_marginRight="14dp"
                         android:hint="@string/alamat"
+                        android:importantForAutofill="no"
                         android:inputType="textMultiLine"
                         android:textSize="20sp" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -206,6 +211,7 @@
                         android:layout_marginLeft="14dp"
                         android:layout_marginRight="14dp"
                         android:hint="@string/profesi"
+                        android:importantForAutofill="no"
                         android:inputType="textCapWords"
                         android:textSize="20sp" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -255,6 +261,8 @@
 
                         android:layout_marginRight="14dp"
                         android:hint="@string/deskripsi_pengalaman"
+                        android:importantForAutofill="no"
+
                         android:inputType="textMultiLine"
                         android:textSize="20sp" />
                 </com.google.android.material.textfield.TextInputLayout>

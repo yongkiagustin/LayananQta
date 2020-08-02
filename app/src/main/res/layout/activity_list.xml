@@ -14,17 +14,20 @@
             android:orientation="horizontal">
 
             <EditText
+                android:id="@+id/list_et_search"
                 android:layout_width="0dp"
+                android:inputType="text"
                 android:layout_height="48dp"
+                android:importantForAutofill="no"
                 android:layout_margin="8dp"
                 android:layout_weight="2"
                 android:background="@drawable/secondary_button"
-                android:hint="Cari berdasarkan Kota"
+                android:hint="@string/cari_berdasarkan_profesi"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp" />
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/list_search"
+                android:id="@+id/list_bt_search"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center_vertical"

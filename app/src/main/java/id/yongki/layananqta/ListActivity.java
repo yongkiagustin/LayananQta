@@ -14,6 +14,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AbsListView;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -44,6 +46,8 @@ public class ListActivity extends AppCompatActivity implements RecyclerAdapter.O
     DocumentSnapshot lastVisible;
     RecyclerView recyclerView;
     ProgressBar progressBar;
+    EditText etsearch;
+    ImageView buttonSearch;
     boolean isScrolling;
     boolean isLastItemReached;
     private static final int PAGE_SIZE = 10;
@@ -63,24 +67,42 @@ public class ListActivity extends AppCompatActivity implements RecyclerAdapter.O
         recyclerView.setLayoutManager(linearLayoutManager);
         progressBar = findViewById(R.id.list_progressbar);
         progressBar.setVisibility(View.VISIBLE);
+        buttonSearch = findViewById(R.id.list_bt_search);
+        etsearch = findViewById(R.id.list_et_search);
         swipeRefreshLayout = findViewById(R.id.list_swiperefreshlayout);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 usersList.clear();
-                readData();
+                String search = etsearch.getText().toString();
+                readData(search);
                 swipeRefreshLayout.setRefreshing(false);
             }
         });
+        String search = etsearch.getText().toString().toLowerCase();
+        readData(search);
+        buttonSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Hasil Pencarian", Toast.LENGTH_LONG).show();
+                usersList.clear();
+                String search = etsearch.getText().toString().toLowerCase();
+                readData(search);
 
-        readData();
+            }
+        });
 
 
     }
 
-    private void readData() {
+    private void readData(String search) {
+        search = etsearch.getText().toString().toLowerCase();
         db.collection("users")
-                .whereEqualTo("status", "Active").orderBy("kota", Query.Direction.ASCENDING).limit(PAGE_SIZE)
+                .whereEqualTo("status", "Active")
+                .orderBy("keyword_profesi", Query.Direction.ASCENDING)
+                .startAt(search)
+                .endAt(search + "\uf8ff")
+                .limit(PAGE_SIZE)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -133,7 +155,7 @@ public class ListActivity extends AppCompatActivity implements RecyclerAdapter.O
                                         if (isScrolling && (firstVisibleItem + visibleItemCount == totalItemCount) && !isLastItemReached) {
                                             isScrolling = false;
                                             db.collection("users")
-                                                    .whereEqualTo("status", "Active").orderBy("kota", Query.Direction.ASCENDING).startAfter(lastVisible).limit(10)
+                                                    .whereEqualTo("status", "Active").orderBy("keyword_profesi", Query.Direction.ASCENDING).startAfter(lastVisible).limit(10)
                                                     .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                                                 @Override
                                                 public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -162,7 +184,6 @@ public class ListActivity extends AppCompatActivity implements RecyclerAdapter.O
                                                     }
                                                     if (!isLastItemReached) {
                                                         lastVisible = task.getResult().getDocuments().get(task.getResult().size() - 1);
-                                                        Toast.makeText(getApplicationContext(), "page 2", Toast.LENGTH_LONG).show();
                                                     }
                                                 }
                                             });

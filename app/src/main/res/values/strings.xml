@@ -19,7 +19,7 @@
     <string name="kota">Kota</string>
     <string name="profesi">Profesi</string>
     <string name="deskripsi_pengalaman">Deskripsi Pengalaman</string>
-    <string name="lama_kerja">Lama Bekerja</string>
+    <string name="lama_kerja">Durasi Pengalaman</string>
     <string name="daftar_menjadi_freelancer">Daftar Menjadi Freelancer</string>
     <string name="ganti_foto">Ganti Foto</string>
     <string name="sebelum_ketahap_selanjutnya">Sebelum ke tahap selanjutnya, yuk isi data diri kamu terlebih dahulu!</string>
@@ -39,7 +39,16 @@
     <string name="hapus_foto">Hapus Foto</string>
     <string name="status">STATUS :</string>
     <string name="tahun"> Tahun</string>
+    <string name="temukan_orang">Temukan orang yang bisa meringankan pekerjaanmu!</string>
+    <string name="bantu_orang">Bantu orang untuk mendapatkan penghasilan!</string>
     <string name="belum_ada_daftar_freelancer">Belum Ada Daftar Freelancer, ayo daftar Sekarang!</string>
+    <string name="cari_berdasarkan_profesi">Cari berdasarkan Profesi</string>
+    <string name="detail_freelancer">Detail Freelancer</string>
+    <string name="hubungi_melalui_whatsapp">Hubungi Melalui WhatsApp</string>
+    <string name="hubungi_melalui_telepon">Hubungi Melalui Telepon</string>
+    <string name="hubungi_melalui_email">Hubungi Melalui Email</string>
+    <string name="no">NO</string>
+    <string name="nama">Nama</string>
 
     //warning
     <string name="nama_kosong">Nama lengkap tidak boleh kosong</string>

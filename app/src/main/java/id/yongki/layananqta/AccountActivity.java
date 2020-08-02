@@ -291,6 +291,7 @@ public class AccountActivity extends AppCompatActivity {
                 user.put("kota", kota);
                 user.put("alamat", alamat);
                 user.put("profesi", profesi);
+                user.put("keyword_profesi", profesi.toLowerCase());
                 user.put("lamakerja", lamakerja);
                 user.put("deskripsi", deskripsi);
                 user.put("status", status);
