@@ -52,10 +52,11 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (isPlay) {
                     v.setBackgroundResource(R.drawable.ic_eye_hide);
-                    etpassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                    etpassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+
                 } else {
                     v.setBackgroundResource(R.drawable.ic_outline_eye_24);
-                    etpassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                    etpassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
                 }
                 isPlay = !isPlay;
             }

@@ -70,6 +70,7 @@ public class ListActivity extends AppCompatActivity implements RecyclerAdapter.O
         buttonSearch = findViewById(R.id.list_bt_search);
         etsearch = findViewById(R.id.list_et_search);
         swipeRefreshLayout = findViewById(R.id.list_swiperefreshlayout);
+
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -81,6 +82,7 @@ public class ListActivity extends AppCompatActivity implements RecyclerAdapter.O
         });
         String search = etsearch.getText().toString().toLowerCase();
         readData(search);
+
         buttonSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

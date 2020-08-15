@@ -51,10 +51,11 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (isPlay) {
                     v.setBackgroundResource(R.drawable.ic_eye_hide);
-                    etPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                    etPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+
                 } else {
                     v.setBackgroundResource(R.drawable.ic_outline_eye_24);
-                    etPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                    etPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
                 }
                 isPlay = !isPlay;
             }
